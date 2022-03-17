@@ -331,7 +331,7 @@ $row = mysqli_fetch_assoc($result);
       <div class="main_header">
         <div class="mainMenu1">
           <div class="addRestaurant">
-            식당 추가
+            <a href="addRestaurant.php">식당 추가</a>
           </div>
         </div>
         <div class="mainMenu2">
