@@ -16,7 +16,6 @@ $sql = "select idx, u_name, u_id, pwd from members where u_id='$u_id';";
 $result = mysqli_query($dbcon,$sql);
 $num = mysqli_num_rows($result);
 
-
 if(!$num){
 	echo "
 	<script type=\"text/javascript\">
@@ -55,26 +54,3 @@ if(!$num){
 exit;
 
 ?>
-
-<!-- <script type="text/javascript">
-	function frem_id(){
-		document.write("아이디 저장: ");
-		if("<?php echo $rem_id;?>" != "on"){
-			document.write("off")
-		} else {
-			document.write("on")
-		}
-	};
-</script>
-<script>
-	function fauto_login(){
-		document.write("자동 로그인: ")
-		if("<?php echo $auto_login;?>" != "on"){
-			document.write("off")
-		} else {
-			document.write("on")
-		}
-	};
-	frem_id();
-	fauto_login();
-</script> -->
