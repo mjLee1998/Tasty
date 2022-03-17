@@ -1,0 +1,9 @@
+table name: restaurant
+
+int primary key auto_increment not null
+id varchar(20) not null
+categori varchar(20) not null
+instaId varchar(20) not null
+address varchar(50) not null
+review varchar(100) not null
+
