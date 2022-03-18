@@ -9,7 +9,7 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
 
 
 include"./inc/dbcon.php";
-$sql = "select * from restaurant where id='올래곱창';";
+$sql = "select * from restaurants where idx= 1;";
 // echo $sql;
 
 //DB에서 값 가져오기
@@ -332,21 +332,21 @@ $row = mysqli_fetch_assoc($result);
         <?php
         if(!$s_id){?>
           <p>로그인을 해주세요.</p>
+        <div class="mainMenu1">
+          <div class="addRestaurant">
+            <a href="addRestaurant.php">식당 추가</a>
+          </div>
+        </div>
+        <div class="mainMenu2">
+          <div class="selectGroup">
+            그룹 별로 보기
+          </div>
+        </div>
+        <div class="mainMenu3">
+          <div class="selectMember">
+            멤버별로 보기
+          </div>
           <?php } else{ ?>
-            <div class="mainMenu1">
-              <div class="addRestaurant">
-                <a href="addRestaurant.php">식당 추가</a>
-              </div>
-            </div>
-            <div class="mainMenu2">
-              <div class="selectGroup">
-                그룹 별로 보기
-              </div>
-            </div>
-            <div class="mainMenu3">
-              <div class="selectMember">
-                멤버별로 보기
-              </div>
           <?php } ?>
         </div>
       </div>
@@ -402,7 +402,7 @@ $row = mysqli_fetch_assoc($result);
             title: '올래곱창',
             latlng: new kakao.maps.LatLng(<?php echo $row["location"] ?>),
             content: '<div class="overlaybox">' +
-            '    <div class="boxtitle"><?php echo $row["id"]?></div>' +
+            '    <div class="boxtitle"><?php echo $row["restaurantName"]?></div>' +
             '    <div class="first">' +
             '        <div class="triangle"></div>' +
             '        <div class="categori"><?php echo $row["categori"]?></div>' +

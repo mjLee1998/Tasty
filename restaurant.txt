@@ -5,11 +5,12 @@ id varchar(20) not null
 categori varchar(20) not null
 instaId varchar(20) not null
 address varchar(50) not null
+address varchar(50) not null
 review varchar(100) not null
 
 create table restaurant(
 	idx int primary key auto_increment not null,
-	id varchar(20) not null,
+	restaurantName varchar(20) not null,
 	categori varchar(20) not null,
 	instaId varchar(20) not null,
 	address varchar(50) not null,
@@ -18,4 +19,4 @@ create table restaurant(
 
 restaurant 식당 기입 형식
 
-insert into restaurant(id, categori, instaId, address, review) values ('$id', '$categori', '$instaId', '$address', '$review',);
+insert into restaurant(restaurantName, categori, instaId, address, review) values ('$restaurantName', '$categori', '$instaId', '$address', '$review', $location);

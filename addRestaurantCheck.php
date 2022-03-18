@@ -9,6 +9,7 @@ $restaurantName = $_POST["restaurantName"];
 $instaId = $_POST["instaId"];
 $categori = $_POST["categori"];
 $review = $_POST["review"];
+$location = $_POST["location"];
 // addr1과 addr3을 한개로 통합
 $addr1 = $addr1.$addr3;
 
@@ -20,14 +21,15 @@ echo "식당 이름: ".$restaurantName."<br>";
 echo "Instagram ID: ".$instaId."<br>";
 echo "카테고리: ".$categori."<br>";
 echo "리뷰: ".$review."<br>";
+echo "좌표: ".$location."<br>";
 
 include"inc/dbcon.php";
 
-$sql = "insert into restaurant(restaurantName, categori, instaId, addr1,addr2, review) values ('$restaurantName', '$categori', '$instaId', '$addr1', '$addr2','$review');";
+$sql = "insert into restaurants(restaurantName, categori, instaId, addr1,addr2, review, location) values ('$restaurantName', '$categori', '$instaId', '$addr1', '$addr2','$review', '$location');";
 
 echo $sql;
 
-mysqli_query($dbcon,$sql);
+// mysqli_query($dbcon,$sql);
 
 mysqli_close($dbcon);
 

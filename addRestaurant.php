@@ -85,11 +85,10 @@ echo "안녕하세요 ".$s_id."님"."<br>"."<br>"."주소를 검색하여 선택
       #map{
         z-index:0;
       }
+      #location{
+        display:none;
+      }
     </style>
-    <script>
-      function a(){
-      };
-    </script>
   </head>
   <body>
     <a href="index.php">홈으로</a><br><br>
@@ -134,6 +133,9 @@ echo "안녕하세요 ".$s_id."님"."<br>"."<br>"."주소를 검색하여 선택
         
         <label for="review"></label>
         <input type="text" name="review" value="review">
+
+        <label for="location"></label>
+        <input type="text" name="location" id="location" value="">
       </p>
       
     </fieldset>
@@ -193,9 +195,10 @@ echo "안녕하세요 ".$s_id."님"."<br>"."<br>"."주소를 검색하여 선택
         position: new daum.maps.LatLng(37.537187, 127.005476),
         map: map,
       });
+
+      
     </script>
 
-    <!-- 지도 파트 끝 -->
 
     <script>
       // 우편번호 찾기 화면을 넣을 element
@@ -281,6 +284,16 @@ echo "안녕하세요 ".$s_id."님"."<br>"."<br>"."주소를 검색하여 선택
                 map.setCenter(coords);
                 // 마커를 결과값으로 받은 위치로 옮긴다.
                 marker.setPosition(coords);
+
+                // 지도의 중심 좌표 가져오기
+                const latlng = map.getCenter();
+
+                const lat = latlng.getLat();
+                const lng = latlng.getLng();
+
+                const location = lat+","+lng;
+                const locValue =  document.querySelector("#location");
+                locValue.value = location;
               }
             });
             // 지도 파트 끝
