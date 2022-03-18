@@ -12,7 +12,7 @@ include"./inc/dbcon.php";
 // echo $sql;
 
 //DB에서 값 가져오기
-echo "안녕하세요".$s_id."님"."<br>"."주소를 검색하여 선택하실 때, 도로명 주소를 선택하여 주세요."."<br>";
+echo "안녕하세요 ".$s_id."님"."<br>"."<br>"."주소를 검색하여 선택하실 때, 도로명 주소를 선택하여 주세요."."<br><br>";
 //table restaurant 변수
 
 // mysqli_close($dbcon);
@@ -29,90 +29,10 @@ echo "안녕하세요".$s_id."님"."<br>"."주소를 검색하여 선택하실 �
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>식당 등록</title>
 
     <style type="text/css">
-      html,
-      body,
-      div,
-      span,
-      applet,
-      object,
-      iframe,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      p,
-      blockquote,
-      pre,
-      a,
-      abbr,
-      acronym,
-      address,
-      big,
-      cite,
-      code,
-      del,
-      dfn,
-      em,
-      img,
-      ins,
-      kbd,
-      q,
-      s,
-      samp,
-      small,
-      strike,
-      strong,
-      sub,
-      sup,
-      tt,
-      var,
-      b,
-      u,
-      i,
-      center,
-      dl,
-      dt,
-      dd,
-      ol,
-      ul,
-      li,
-      fieldset,
-      form,
-      label,
-      legend,
-      table,
-      caption,
-      tbody,
-      tfoot,
-      thead,
-      tr,
-      th,
-      td,
-      article,
-      aside,
-      canvas,
-      details,
-      embed,
-      figure,
-      figcaption,
-      footer,
-      header,
-      hgroup,
-      menu,
-      nav,
-      output,
-      ruby,
-      section,
-      summary,
-      time,
-      mark,
-      audio,
-      video {
+      html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,a,address,ul,li,fieldset,form,label,legend,footer,header,nav{
         margin: 0;
         padding: 0;
         border: 0;
@@ -162,18 +82,61 @@ echo "안녕하세요".$s_id."님"."<br>"."주소를 검색하여 선택하실 �
         font-size:14px;
         font-family:Helvetica;
       }
+      #map{
+        z-index:0;
+      }
     </style>
+    <script>
+      function a(){
+      };
+    </script>
   </head>
   <body>
-    <input type="text" id="sample2_postcode" placeholder="우편번호" />
-    <input
-      type="button"
-      onclick="sample2_execDaumPostcode()"
-      value="우편번호 찾기"
-    /><br />
-    <input type="text" id="sample2_address" placeholder="주소" /><br />
-    <input type="text" id="sample2_detailAddress" placeholder="상세주소" />
-    <input type="text" id="sample2_extraAddress" placeholder="참고항목" />
+    <a href="index.php">홈으로</a><br><br>
+    <form name="addRestaurant_form" action="addRestaurantCheck.php" method="post" onsubmit="return a()">
+
+    <fieldset>
+      <legend>식당 등록</legend><br>
+      <p>
+      <label for="postcode"></label>
+        <input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly />
+        <input
+        type="button"
+        onclick="execDaumPostcode()"
+        value="우편번호 찾기"
+        /><br />
+      </p>
+      <p>
+        <label for="address"></label>
+        <input type="text" name="address" id="address" placeholder="주소" readonly/><br />
+        <label for="detailAddress"></label>
+        <input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소" />
+        <label for="extraAddress"></label>
+        <input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목" readonly/>
+      </p>
+        
+      <p>
+        <label for="restaurantName"></label>
+        <input type="text" name="restaurantName" value="식당 이름"/>
+        <label for="instaId"></label>
+        <input type="text" name="instaId" value="Instagram 아이디"/>
+
+        <label for="categori"></label>
+        <select name="categori" id="categori">
+          <option value="한식">한식</option>
+          <option value="중식">중식</option>
+          <option value="일식">일식</option>
+          <option value="양식">양식</option>
+          <option value="분식">분식</option>
+          <option value="스시">스시</option>
+          <option value="회">회</option>
+        </select>
+        
+        <label for="review"></label>
+        <input type="text" name="review" value="review">
+      </p>
+      
+    </fieldset>
 
     <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
     <div
@@ -211,7 +174,7 @@ echo "안녕하세요".$s_id."님"."<br>"."주소를 검색하여 선택하실 �
 
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=26fdf226a690f77f33e7a8f67ee40ac1&libraries=services"></script>
     <div class="registerInfo">
-      <input type="text" />
+      <button type="submit" id="regist">등록하기</button>
     </div>
 
     <script>
@@ -243,7 +206,7 @@ echo "안녕하세요".$s_id."님"."<br>"."주소를 검색하여 선택하실 �
         element_layer.style.display = "none";
       }
 
-      function sample2_execDaumPostcode() {
+      function execDaumPostcode() {
         new daum.Postcode({
           oncomplete: function (data) {
             // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -281,16 +244,16 @@ echo "안녕하세요".$s_id."님"."<br>"."주소를 검색하여 선택하실 �
                 extraAddr = " (" + extraAddr + ")";
               }
               // 조합된 참고항목을 해당 필드에 넣는다.
-              document.getElementById("sample2_extraAddress").value = extraAddr;
+              document.getElementById("extraAddress").value = extraAddr;
             } else {
-              document.getElementById("sample2_extraAddress").value = "";
+              document.getElementById("extraAddress").value = "";
             }
 
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById("sample2_postcode").value = data.zonecode;
-            document.getElementById("sample2_address").value = addr;
+            document.getElementById("postcode").value = data.zonecode;
+            document.getElementById("address").value = addr;
             // 커서를 상세주소 필드로 이동한다.
-            document.getElementById("sample2_detailAddress").focus();
+            document.getElementById("detailAddress").focus();
 
             // iframe을 넣은 element를 안보이게 한다.
             // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
@@ -302,7 +265,7 @@ echo "안녕하세요".$s_id."님"."<br>"."주소를 검색하여 선택하실 �
             // var addr1 = data.address; // 최종 주소 변수
 
             // // 주소 정보를 해당 필드에 넣는다.
-            // document.getElementById("sample2_address").value = addr1;
+            // document.getElementById("address").value = addr1;
             // 주소로 상세 정보를 검색
             geocoder.addressSearch(data.address, function (results, status) {
               // 정상적으로 검색이 완료됐으면

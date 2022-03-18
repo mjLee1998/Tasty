@@ -329,20 +329,25 @@ $row = mysqli_fetch_assoc($result);
 
     <main>
       <div class="main_header">
-        <div class="mainMenu1">
-          <div class="addRestaurant">
-            <a href="addRestaurant.php">식당 추가</a>
-          </div>
-        </div>
-        <div class="mainMenu2">
-          <div class="selectGroup">
-            그룹 별로 보기
-          </div>
-        </div>
-        <div class="mainMenu3">
-          <div class="selectMember">
-            멤버별로 보기
-          </div>
+        <?php
+        if(!$s_id){?>
+          <p>로그인을 해주세요.</p>
+          <?php } else{ ?>
+            <div class="mainMenu1">
+              <div class="addRestaurant">
+                <a href="addRestaurant.php">식당 추가</a>
+              </div>
+            </div>
+            <div class="mainMenu2">
+              <div class="selectGroup">
+                그룹 별로 보기
+              </div>
+            </div>
+            <div class="mainMenu3">
+              <div class="selectMember">
+                멤버별로 보기
+              </div>
+          <?php } ?>
         </div>
       </div>
       <div class="searchbar"></div>

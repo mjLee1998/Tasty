@@ -38,9 +38,7 @@ include "inc/admin_session.php"
 	<p>관리자 문서입니다.</p>
 	<p>"<?php echo $s_name; ?>"님, 안녕하세요.</p>
 	<p>
-				<a href="/website/admin/admin.php">홈으로</a>
-				<!-- <a href="../board/board_list.php">게시판 관리</a> -->
-				<a href="#none">게시판 관리</a>
+				<a href="../index.php">홈으로</a>
 				<a href="members/list.php">회원 관리</a>
 				<a href="../login/logout.php">로그아웃</a>
 			</p>
