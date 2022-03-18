@@ -43,12 +43,18 @@ $row = mysqli_fetch_assoc($result);
       select{
         font-size: 24px;
       }
+      a{
+        text-decoration:none;
+      }
+      a:visited{
+        color:black;
+      }
       @font-face {
         font-family: "TmonMonsori";
         src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff")
           format("woff");
-        font-weight: thin;
-        font-style: lighter;
+        font-weight: normal;
+        font-style: normal;
       }
 
       /* 헤더 로고 및 사이트맵 스타일 */
@@ -155,13 +161,13 @@ $row = mysqli_fetch_assoc($result);
       .selectMember{
         padding-left: 10px;
       }
-      
+/*       
       .searchbar {
         border: 1px solid black;
         width: 380px;
         height: 38px;
         margin-bottom: 20px;
-      }
+      } */
       .text {
         width: 180px;
         height: 38px;
@@ -170,7 +176,7 @@ $row = mysqli_fetch_assoc($result);
         font-size:16px;
         margin-left:10px;
         width: 60px;
-        height: 38px;
+        height: 50px;
       }
       .searchButton {
         width: 100px;
@@ -181,10 +187,9 @@ $row = mysqli_fetch_assoc($result);
       }
       
       /* 지도 스타일 */
-      .map {
-        border: 1px solid black;
-        width: 380px;
-        height: 420px;
+      #map {
+        box-sizing:content-box;
+        border: 3px solid black;
       }
       </style>
 
@@ -332,25 +337,25 @@ $row = mysqli_fetch_assoc($result);
         <?php
         if(!$s_id){?>
           <p>로그인을 해주세요.</p>
-        <div class="mainMenu1">
-          <div class="addRestaurant">
-            <a href="addRestaurant.php">식당 추가</a>
-          </div>
-        </div>
-        <div class="mainMenu2">
-          <div class="selectGroup">
-            그룹 별로 보기
-          </div>
-        </div>
-        <div class="mainMenu3">
-          <div class="selectMember">
-            멤버별로 보기
-          </div>
           <?php } else{ ?>
+            <div class="mainMenu1">
+              <div class="addRestaurant">
+                <a href="addRestaurant.php">식당 추가</a>
+              </div>
+            </div>
+            <div class="mainMenu2">
+              <div class="selectGroup">
+                그룹 별로 보기
+              </div>
+            </div>
+            <div class="mainMenu3">
+              <div class="selectMember">
+                멤버별로 보기
+              </div>
           <?php } ?>
         </div>
       </div>
-      <div class="searchbar"></div>
+      <!-- <div class="searchbar"></div> -->
       <div class="search">
         <input type="text" class="text" />
         <select name="selectCategori" id="selectCategori">
@@ -364,7 +369,7 @@ $row = mysqli_fetch_assoc($result);
         </select>
         <button type="button" class="searchButton">검색</button>
       </div>
-      <div id="map" style="width: 380px; height: 400px"></div>
+      <div id="map" style="width: 380px; height: 480px"></div>
       <script
         type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=26fdf226a690f77f33e7a8f67ee40ac1"
@@ -373,7 +378,7 @@ $row = mysqli_fetch_assoc($result);
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
           center: new kakao.maps.LatLng(37.506888, 127.045361), // 지도의 중심좌표
-          level: 8 // 지도의 확대 레벨
+          level: 9 // 지도의 확대 레벨
         };
 
         // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
@@ -511,20 +516,13 @@ $row = mysqli_fetch_assoc($result);
         kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, customOverlay));
 
 
+        
+        
+        
         kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
-          return function(){
-            if(clickedOverlay){
-              clickedOverlay.setMap(null);
-            }
-          }
-        });
-
-
-
-
-
-        kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
-          clickedOverlay.setMap(null);
+          if(clickedOverlay){
+            clickedOverlay.setMap(null);
+          };
         });
 
 
@@ -547,8 +545,7 @@ $row = mysqli_fetch_assoc($result);
             customOverlay.setMap(null);
           };
         }
-
-
+        console.log(customOverlay);
         //for문 마지막
         }
 
