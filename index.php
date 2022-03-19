@@ -234,7 +234,7 @@ $row = mysqli_fetch_assoc($result);
         font-size: 12px;
         color: #fff;
       }
-      .overlaybox .text {
+      .overlaybox .instaId {
         color: #fff;
         font-weight: bold;
         font-size: 12px;
@@ -358,7 +358,7 @@ $row = mysqli_fetch_assoc($result);
       <!-- <div class="searchbar"></div> -->
       <div class="search">
         <input type="text" class="text" />
-        <select name="selectCategori" id="selectCategori">
+        <select name="selectCategori" id="selectCategori" class="selectCategori">
           <option value="한식">한식</option>
           <option value="중식">중식</option>
           <option value="일식">일식</option>
@@ -367,7 +367,7 @@ $row = mysqli_fetch_assoc($result);
           <option value="스시">스시</option>
           <option value="회">회</option>
         </select>
-        <button type="button" class="searchButton">검색</button>
+        <button type="button" class="searchButton" onclick="categorize()">검색</button>
       </div>
       <div id="map" style="width: 380px; height: 480px"></div>
       <script
@@ -412,7 +412,7 @@ $row = mysqli_fetch_assoc($result);
             '        <div class="triangle"></div>' +
             '        <div class="categori"><?php echo $row["categori"]?></div>' +
             '    </div>' +
-            '    <div class="text"><?php echo $row["instaId"]?></div>' +
+            '    <div class="instaId"><?php echo $row["instaId"]?></div>' +
             '    <ul class="information">' +
             '        <li class="address">' +
             '            <div class="addr">주소</div>' +
@@ -436,7 +436,7 @@ $row = mysqli_fetch_assoc($result);
             '        <div class="triangle"></div>' +
             '        <div class="categori">잡식</div>' +
             '    </div>' +
-            '    <div class="text">@kwanidlfrk</div>' +
+            '    <div class="instaId">@kwanidlfrk</div>' +
             '    <ul class="information">' +
             '        <li class="address">' +
             '            <div class="addr">주소</div>' +
@@ -460,7 +460,7 @@ $row = mysqli_fetch_assoc($result);
             '        <div class="triangle"></div>' +
             '        <div class="categori">본진</div>' +
             '    </div>' +
-            '    <div class="text">@thing_lmj</div>' +
+            '    <div class="instaId">@thing_lmj</div>' +
             '    <ul class="information">' +
             '        <li class="address">' +
             '            <div class="addr">주소</div>' +
@@ -550,6 +550,19 @@ $row = mysqli_fetch_assoc($result);
         }
 
       // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
+      </script>
+
+      <script>
+        //카테고리를 이용해서 마커 분류하기
+
+        function categorize(){
+          const selectedCategori = document.querySelector(".selectCategori");
+          const idx = selectedCategori.options.selectedIndex;
+          const selectedValue = selectedCategori.options[idx].value;
+
+          const categori = document.querySelector(".categori")
+          console.log(categori.innerText);
+        }
       </script>
     </main>
 
