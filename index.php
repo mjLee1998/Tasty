@@ -453,6 +453,7 @@ $row = mysqli_fetch_assoc($result);
           {
             index: 3,
             title: '띵진이집',
+            categori: "분식",
             latlng: new kakao.maps.LatLng(37.506888, 127.045361),
             content: '<div class="overlaybox">' +
             '    <div class="boxtitle">띵진이집</div>' +
@@ -493,7 +494,8 @@ $row = mysqli_fetch_assoc($result);
           map: map, // 마커를 표시할 지도
           position: positions[i].latlng, // 마커를 표시할 위치
           title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-          image : markerImage // 마커 이미지
+          image : markerImage, // 마커 이미지
+          categori : positions[i].categori
         });
         var customOverlay = new kakao.maps.CustomOverlay({
           position: positions[i].latlng,
@@ -502,20 +504,19 @@ $row = mysqli_fetch_assoc($result);
           xAnchor: 0.3,
           yAnchor: 0.91
         });
-
-
-
+        
+        
         // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
         // 이벤트 리스너로는 클로저를 만들어 등록합니다
         // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+        
+        
+        
 
-
-
-
-
+        
         kakao.maps.event.addListener(marker, 'click', makeOverListener(map, marker, customOverlay));
-
-
+        
+        
         
         
         
@@ -524,9 +525,9 @@ $row = mysqli_fetch_assoc($result);
             clickedOverlay.setMap(null);
           };
         });
-
-
-
+        
+        
+        
         function makeOverListener(map, marker, customOverlay) {
           return function() {
             if(clickedOverlay){
@@ -536,18 +537,19 @@ $row = mysqli_fetch_assoc($result);
             clickedOverlay = customOverlay;
             map.panTo(marker.getPosition());
           };
-
+          
         }
-
-
+        
+        
         function makeOutListener(customOverlay) {
           return function() {
             customOverlay.setMap(null);
           };
         }
         console.log(customOverlay);
+        console.log(marker);
         //for문 마지막
-        }
+      }
 
       // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
       </script>
