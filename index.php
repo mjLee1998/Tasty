@@ -453,7 +453,6 @@ $row = mysqli_fetch_assoc($result);
           {
             index: 3,
             title: '띵진이집',
-            categori: "분식",
             latlng: new kakao.maps.LatLng(37.506888, 127.045361),
             content: '<div class="overlaybox">' +
             '    <div class="boxtitle">띵진이집</div>' +
@@ -495,7 +494,6 @@ $row = mysqli_fetch_assoc($result);
           position: positions[i].latlng, // 마커를 표시할 위치
           title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
           image : markerImage, // 마커 이미지
-          categori : positions[i].categori
         });
         var customOverlay = new kakao.maps.CustomOverlay({
           position: positions[i].latlng,
@@ -547,13 +545,13 @@ $row = mysqli_fetch_assoc($result);
           };
         }
         console.log(customOverlay);
-        console.log(marker);
+
         //for문 마지막
       }
 
       // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
       </script>
-
+    
       <script>
         //카테고리를 이용해서 마커 분류하기
 
@@ -561,10 +559,19 @@ $row = mysqli_fetch_assoc($result);
           const selectedCategori = document.querySelector(".selectCategori");
           const idx = selectedCategori.options.selectedIndex;
           const selectedValue = selectedCategori.options[idx].value;
-
+          console.log(selectedValue);
           const categori = document.querySelector(".categori")
-          console.log(categori.innerText);
+
+          //마커 모두 지우기
+          
+          //카테고리가 일치하는 마커만 다시 재생성
+          for(var i = 0; i < positions.length; i++){
+            console.log(positions[i].content.includes("한식"));
+            const trueOrNot = positions[i].content.includes("한식");
+          }
+          
         }
+
       </script>
     </main>
 
