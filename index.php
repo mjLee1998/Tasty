@@ -359,6 +359,7 @@ $row = mysqli_fetch_assoc($result);
       <div class="search">
         <input type="text" class="text" />
         <select name="selectCategori" id="selectCategori" class="selectCategori">
+          <option value="">카테고리</option>
           <option value="한식">한식</option>
           <option value="중식">중식</option>
           <option value="일식">일식</option>
@@ -480,9 +481,26 @@ $row = mysqli_fetch_assoc($result);
         var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 
 
-        for (var i = 0; i < positions.length; i ++) {
+      </script>
+    
+      <script>
+        //카테고리를 이용해서 마커 분류하기
+        let createdMarker = [];
 
-        // 마커 이미지의 이미지 크기 입니다
+        function categorize(){
+          const selectedCategori = document.querySelector(".selectCategori");
+          const idx = selectedCategori.options.selectedIndex;
+          const selectedValue = selectedCategori.options[idx].value;
+          const categori = document.querySelector(".categori")
+          
+          for(var i = 0; i<createdMarker.length; i++){
+            createdMarker[i].setMap(null);
+          }
+          
+          //카테고리가 일치하는 마커만 다시 재생성
+          for(var i = 0; i < positions.length; i++){
+            const trueOrNot = positions[i].content.includes(selectedValue);
+            // 마커 이미지의 이미지 크기 입니다
         var imageSize = new kakao.maps.Size(24, 35);
 
         // 마커 이미지를 생성합니다
@@ -493,16 +511,20 @@ $row = mysqli_fetch_assoc($result);
           map: map, // 마커를 표시할 지도
           position: positions[i].latlng, // 마커를 표시할 위치
           title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-          image : markerImage, // 마커 이미지
-        });
-        var customOverlay = new kakao.maps.CustomOverlay({
-          position: positions[i].latlng,
-          content: positions[i].content,
-          clickable: true,
-          xAnchor: 0.3,
-          yAnchor: 0.91
-        });
-        
+        image : markerImage, // 마커 이미지
+      });
+      var customOverlay = new kakao.maps.CustomOverlay({
+        position: positions[i].latlng,
+        content: positions[i].content,
+        clickable: true,
+        xAnchor: 0.3,
+        yAnchor: 0.91
+      });
+      marker.setMap(null);
+      if(trueOrNot == true){
+        marker.setMap(map);
+        createdMarker.push(marker);
+      }
         
         // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
         // 이벤트 리스너로는 클로저를 만들어 등록합니다
@@ -544,32 +566,7 @@ $row = mysqli_fetch_assoc($result);
             customOverlay.setMap(null);
           };
         }
-        console.log(customOverlay);
-
-        //for문 마지막
-      }
-
-      // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
-      </script>
-    
-      <script>
-        //카테고리를 이용해서 마커 분류하기
-
-        function categorize(){
-          const selectedCategori = document.querySelector(".selectCategori");
-          const idx = selectedCategori.options.selectedIndex;
-          const selectedValue = selectedCategori.options[idx].value;
-          console.log(selectedValue);
-          const categori = document.querySelector(".categori")
-
-          //마커 모두 지우기
-          
-          //카테고리가 일치하는 마커만 다시 재생성
-          for(var i = 0; i < positions.length; i++){
-            console.log(positions[i].content.includes("한식"));
-            const trueOrNot = positions[i].content.includes("한식");
           }
-          
         }
 
       </script>
