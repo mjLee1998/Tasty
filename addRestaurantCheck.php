@@ -33,9 +33,9 @@ echo $sql;
 
 mysqli_close($dbcon);
 
-// echo "
-// <script type=\"text/javascript\">
-// 	location.href=\"https://localhost/tasty/complete.php\"
-// </script>
-// ";
+echo "
+<script type=\"text/javascript\">
+	location.href=\"https://localhost/tasty/complete.php\"
+</script>
+";
 ?>

@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>식당 등록 완료</h1>
+	<a href="index.php">홈으로</a>
 </body>
 </html>
