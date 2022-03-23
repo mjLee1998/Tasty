@@ -16,9 +16,6 @@ echo $sql;
 $set = "set @rownum = 0;";
 mysqli_query($dbcon,$set);
 $result = mysqli_query($dbcon,$sql);
-$row = mysqli_fetch_assoc($result);
-echo "<br>";
-echo $row["addr1"];
 
 
 ?>
@@ -34,6 +31,11 @@ echo $row["addr1"];
 	</head>
 	<body>
 		<script>
+			// var positions = [];
+			<?php
+			for($i = 0; $i < $row ; $i++){
+				echo $i;
+			}?>
 	</script>
 </body>
 </html>
