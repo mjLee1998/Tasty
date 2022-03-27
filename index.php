@@ -406,7 +406,7 @@ $row = mysqli_fetch_assoc($result);
           {
             index: 1,
             title: '올래곱창',
-            latlng: new kakao.maps.LatLng(<?php echo $row["location"] ?>),
+            latlng: new kakao.maps.LatLng(<?php echo $row['location'] ?>),
             content: '<div class="overlaybox">' +
             '    <div class="boxtitle"><?php echo $row["restaurantName"]?></div>' +
             '    <div class="first">' +
@@ -477,8 +477,8 @@ $row = mysqli_fetch_assoc($result);
           }
         ];
 
-
-        <?php
+        // 마커 자동 생성 반복문
+        // <?php
         // include"./inc/dbcon.php";
         // $sql = "select * from restaurants;";
 
