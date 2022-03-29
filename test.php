@@ -14,7 +14,6 @@
 				$set = "set @rownum = 0;";
 				mysqli_query($dbcon,$set);
 				$result = mysqli_query($dbcon,$sql);
-				$i = 1;
 				?>
 
 
@@ -26,26 +25,48 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Document</title>
 		<script
-        type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=26fdf226a690f77f33e7a8f67ee40ac1"
-      ></script>
+		type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=26fdf226a690f77f33e7a8f67ee40ac1"
+		></script>
+		<script src="jquery-3.6.0.min.js"></script>
 	</head>
 	<body>
+	<button id="start_ajax">서버와 통신시작</button>
+
+		<script>
+	$("#start_ajax").click(function(){
+    $.ajax({
+            
+						type : "GET",
+						url : "ajax.js",
+						dataType : "text",
+						error : function(){
+								alert('통신실패!!');
+						},
+						success : function(data){
+								alert("통신데이터 값 : " + data) ;
+								$("#dataArea").html(data) ;
+						}
+				});
+		});
+		</script>
 		<script>
 			var positions = [];
-			var i;
+			var i = 1;
+			<?php $i = 1; ?>
 			for(i = 1; i <= <?php echo $row ?>; i++){
 				<?php
 					$set = "set @rownum = 0;";
 					mysqli_query($dbcon,$set);
-					$sql = "select R.* from (select @rownum:=@rownum+1 as row, A.* from restaurants A where (@rownum:=0)=0) R where row = $i;";
+					$sql = "select R.* from (select @rownum:=@rownum+1 as row, A.* from restaurants A where (@rownum:=0)=0) R where row = ".$i.";";
 					
 					$result = mysqli_query($dbcon,$sql);
 					$rows = mysqli_fetch_assoc($result);
+					$i++;
 				?>
-				
+				console.log(<?php echo $i ?>);
 				var marker =  {
-						index: 1,
+						index: i,
             title: '<?php echo $rows["restaurantName"] ?>',
             latlng: new kakao.maps.LatLng(<?php echo $rows['location'] ?>),
             content: '<div class="overlaybox">' +
