@@ -584,7 +584,7 @@ $row = mysqli_fetch_assoc($result);
         }
           }
         }
-
+        console.log(positions);
       </script>
     </main>
 
