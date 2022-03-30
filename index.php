@@ -38,11 +38,13 @@ $row = mysqli_fetch_assoc($result);
     />
     <link rel="stylesheet" href="style/index.css">
     <script type="text/javascript"></script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
   </head>
   <body>
-    <header>
-      <div class="header">
-        <div class="logo"></div>
+    <header class="header">
+        <div class="logo">
+          <h1 class="tasty">Tasty</h1>
+        </div>
         <div class="menu">
           <ul>
             <?php
@@ -51,10 +53,10 @@ $row = mysqli_fetch_assoc($result);
             <li><a href="./members/join.php">회원가입</a></li>
             <?php } else { ?>
             <p id="hello">
-              <?php echo $s_name; ?>님, 안녕하세요.
+              <?php echo $s_name; ?>님 &nbsp어서오세요
               <li><a href="login/logout.php">로그아웃</a></li>
               <li><a href="members/members.php">멤버</a></li>
-              <li><a href="members/edit.php">정보수정</a></li>
+              <!-- <li><a href="members/edit.php">정보수정</a></li> -->
               <?php if($s_id == "admin"){ ?>
               <li><a href="admin/admin.php">관리자</a></li>
               <?php }; ?>
@@ -63,14 +65,13 @@ $row = mysqli_fetch_assoc($result);
             </p>
           </ul>
         </div>
-      </div>
     </header>
 
     <main>
       <div class="main_header">
         <?php
         if(!$s_id){?>
-          <p>로그인을 해주세요.</p>
+          <p></p>
           <?php } else{ ?>
             <div class="mainMenu1">
               <div class="addRestaurant">
@@ -91,7 +92,7 @@ $row = mysqli_fetch_assoc($result);
       </div>
       <!-- <div class="searchbar"></div> -->
       <div class="search">
-        <input type="text" class="text" />
+        <input type="text" class="text" placeholder="식당 이름을 입력"/>
         <select name="selectCategori" id="selectCategori" class="selectCategori">
           <option value="">카테고리</option>
           <option value="한식">한식</option>

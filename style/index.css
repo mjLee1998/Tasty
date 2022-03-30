@@ -2,7 +2,7 @@
 body,
 input,
 select {
-  font-size: 24px;
+  font-size: 20px;
 }
 a {
   text-decoration: none;
@@ -17,6 +17,12 @@ a:visited {
   font-weight: normal;
   font-style: normal;
 }
+body {
+  background-color: #bfbfba;
+  font-family: "TmonMonsori";
+  font-size: 14px;
+  margin: 0px 8px;
+}
 
 /* 헤더 로고 및 사이트맵 스타일 */
 .header a {
@@ -24,7 +30,10 @@ a:visited {
   color: black;
 }
 .header ul {
+  display: block;
+  width: 250px;
   padding-left: 0;
+  padding-top: -10px;
 }
 .header li {
   list-style: none;
@@ -40,17 +49,18 @@ span {
   font-size: 14px;
   color: red;
 }
-body {
-  font-family: "TmonMonsori";
-  font-size: 14px;
-  margin: 0px 10px;
-}
 .header {
-  border: 1px solid black;
+  /* border: 3px solid #d9a23d; */
+  box-sizing: content-box;
   width: 380px;
   height: 70px;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+.header .tasty {
+  font-size: 35px;
+  color: #38a69b;
+  line-height: 170%;
 }
 .header .logo {
   width: 100px;
@@ -58,39 +68,51 @@ body {
   margin-top: 8px;
   margin-left: 10px;
   float: left;
-  background-image: url(../img/logo.png);
+  /* background-image: url(../img/logo.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
 }
 #hello {
-  margin-left: 5px;
+  padding-top: 5px;
+  margin-left: 20px;
+  color: #38a69b;
 }
 .menu ul {
   width: 250px;
-  height: 42px;
-  margin-left: 109px;
+  height: 70px;
+  margin-left: 130px;
+  padding-right: 10px;
 }
 .menu li {
-  float: left;
-  margin-top: 25px;
+  float: right;
+  margin-top: 40px;
   margin-left: 10px;
 }
+.menu li a {
+  color: #3f6473;
+  font-size: 16px;
+}
 #hello {
+  font-size: 16px;
   position: absolute;
-  left: 125px;
+  left: 220px;
   top: 15px;
   margin-top: 14px;
 }
 
 /* 메인 메뉴 스타일 */
 .main_header {
-  border: 1px solid black;
+  /* border: 3px solid #d9a23d; */
+  box-sizing: content-box;
   width: 380px;
   height: 38px;
   margin-bottom: 20px;
 }
+.main_header .mainMenu1 a {
+  color: #403d40;
+}
 .mainMenu1 {
-  font-size: 14px;
+  font-size: 15px;
   width: 100px;
   height: 38px;
   padding: 10px 10px 10px 0px;
@@ -101,7 +123,8 @@ body {
   padding-left: 10px;
 }
 .mainMenu2 {
-  font-size: 14px;
+  color: #403d40;
+  font-size: 15px;
   width: 100px;
   height: 38px;
   padding: 10px 10px 10px 0px;
@@ -112,8 +135,9 @@ body {
   padding-left: 10px;
 }
 .mainMenu3 {
-  font-size: 14px;
-  width: 100px;
+  color: #403d40;
+  font-size: 15px;
+  width: 110px;
   height: 38px;
   padding: 10px 10px 10px 0px;
   margin: 0px 0px 0px 20px;
@@ -122,35 +146,45 @@ body {
 .selectMember {
   padding-left: 10px;
 }
-/*       
-.searchbar {
-	border: 1px solid black;
-	width: 380px;
-	height: 38px;
-	margin-bottom: 20px;
-} */
 .text {
-  width: 180px;
+  width: 160px;
   height: 38px;
-}
-#selectCategori {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  border-radius: 10px;
+  color: #38a69b;
   font-size: 16px;
-  margin-left: 10px;
-  width: 60px;
-  height: 50px;
+  text-align: center;
+}
+.selectCategori {
+  font-size: 15px;
+  margin-left: 20px;
+  width: 90px;
+  height: 38px;
+  text-align: center;
+  border-radius: 10px;
+  color: #403d40;
+  line-height: 36px;
 }
 .searchButton {
-  width: 100px;
+  width: 80px;
   height: 38px;
-  margin-left: 16px;
+  border-radius: 10px;
+  border: 1px solid #e4edf2;
+  margin-left: 20px;
   margin-bottom: 20px;
   font-size: 14px;
+  color: #e4edf2;
+  background-color: #38a69b;
+  line-height: 36px;
 }
 
 /* 지도 스타일 */
 #map {
   box-sizing: content-box;
-  border: 3px solid black;
+  border: 3px solid #e4edf2;
 }
 
 /* 오버레이 스타일 */

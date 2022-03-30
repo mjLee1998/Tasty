@@ -1,0 +1,160 @@
+body,
+input,
+select {
+  font-size: 20px;
+}
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+}
+@font-face {
+  font-family: "TmonMonsori";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  background-color: #bfbfba;
+}
+
+/* 헤더 로고 및 사이트맵 스타일 */
+.header a {
+  text-decoration: none;
+  color: black;
+}
+.header ul {
+  padding-left: 0;
+}
+.header li {
+  list-style: none;
+}
+.header ul {
+  margin: 14px 0px;
+}
+input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+}
+span {
+  font-size: 14px;
+  color: red;
+}
+body {
+  font-family: "TmonMonsori";
+  font-size: 14px;
+  margin: 0px 15px;
+}
+.header {
+  /* border: 3px solid #d9a23d; */
+  box-sizing: content-box;
+  width: 380px;
+  height: 70px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.header .tasty {
+  font-size: 35px;
+  color: #38a69b;
+  line-height: 170%;
+}
+.header .logo {
+  width: 100px;
+  height: 50px;
+  margin-top: 8px;
+  margin-left: 10px;
+  float: left;
+  /* background-image: url(../img/logo.png);
+  background-repeat: no-repeat;
+  background-size: cover; */
+}
+#hello {
+  padding-top: 5px;
+  margin-left: 14px;
+  color: #38a69b;
+}
+.menu ul {
+  width: 250px;
+  height: 42px;
+  margin-left: 109px;
+}
+.menu li {
+  float: left;
+  margin-top: 40px;
+  margin-left: 10px;
+}
+#hello {
+  position: absolute;
+  left: 125px;
+  top: 15px;
+  margin-top: 14px;
+}
+
+/* 메인 메뉴 스타일 */
+.main_header {
+  border: 3px solid #d9a23d;
+  box-sizing: content-box;
+  width: 380px;
+  height: 38px;
+  margin-bottom: 20px;
+}
+.mainMenu1 {
+  font-size: 14px;
+  width: 100px;
+  height: 38px;
+  padding: 10px 10px 10px 0px;
+  margin-left: 20px;
+  float: left;
+}
+.addRestaurant {
+  padding-left: 10px;
+}
+.mainMenu2 {
+  font-size: 14px;
+  width: 100px;
+  height: 38px;
+  padding: 10px 10px 10px 0px;
+  margin-left: 20px;
+  float: left;
+}
+.groupSelect {
+  padding-left: 10px;
+}
+.mainMenu3 {
+  font-size: 14px;
+  width: 100px;
+  height: 38px;
+  padding: 10px 10px 10px 0px;
+  margin: 0px 0px 0px 20px;
+  float: left;
+}
+.selectMember {
+  padding-left: 10px;
+}
+/*       
+.searchbar {
+	border: 1px solid black;
+	width: 380px;
+	height: 38px;
+	margin-bottom: 20px;
+} */
+.text {
+  width: 180px;
+  height: 38px;
+}
+#selectCategori {
+  font-size: 16px;
+  margin-left: 10px;
+  width: 60px;
+  height: 50px;
+}
+.searchButton {
+  width: 100px;
+  height: 38px;
+  margin-left: 16px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #38a69b;
+}
