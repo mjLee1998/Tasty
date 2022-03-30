@@ -12,6 +12,8 @@
 				$set = "set @rownum = 0;";
 				mysqli_query($dbcon,$set);
 				$result = mysqli_query($dbcon,$sql);
+
+				mysqli_close($dbcon);
 				?>
 
 
@@ -29,69 +31,24 @@
 		<script src="jquery-3.6.0.min.js"></script>
 	</head>
 	<body>
-	<button id="start_ajax">서버와 통신시작</button>
 
 		<script>
-	$("#start_ajax").click(function(){
-    $.ajax({
-            
-						type : "GET",
-						url : "test.php",
-						data:{i:2},
-						dataType : "text",
-						error : function(){
-								alert('통신실패!!');
-						},
-						success : function(data){
-								alert("통신데이터 값 : " + data) ;
-								$("#dataArea").html(data) ;
-						}
-				});
-		});
-		</script>
-		<script>
-			var positions = [];
-			var i = 1;
-			for(i = 1; i <= <?php echo $row ?>; i++){
-				<?php
-					$set = "set @rownum = 0;";
-					mysqli_query($dbcon,$set);
-					$sql = "select R.* from (select @rownum:=@rownum+1 as row, A.* from restaurants A where (@rownum:=0)=0) R where row = ".$_GET["i"].";";
-					
-					$result = mysqli_query($dbcon,$sql);
-					$rows = mysqli_fetch_assoc($result);
-					$i++;
-				?>
-				console.log(<?php echo $i ?>);
-				var marker =  {
-						index: i,
-            title: '<?php echo $rows["restaurantName"] ?>',
-            latlng: new kakao.maps.LatLng(<?php echo $rows['location'] ?>),
-            content: '<div class="overlaybox">' +
-            '    <div class="boxtitle"><?php echo $rows["restaurantName"]?></div>' +
-            '    <div class="first">' +
-            '        <div class="triangle"></div>' +
-            '        <div class="categori"><?php echo $rows["categori"]?></div>' +
-            '    </div>' +
-            '    <div class="instaId"><?php echo $rows["instaId"]?></div>' +
-            '    <ul class="information">' +
-            '        <li class="address">' +
-            '            <div class="addr">주소</div>' +
-            '            <div class="addr1"><?php echo $rows["addr1"]?></div>' +
-            '            <div class="addr2"><?php echo $rows["addr2"]?></div>' +
-            '        </li>' +
-            '        <li class="review">' +
-            '            <div class="review1">한줄평</div>' +
-            '            <div class="review2"><?php echo $rows["review"]?></div>' +
-            '        </li>' +
-            '    </ul>' +
-            '</div>'
-          };
-
-
-				positions.push(marker);
-				console.log(positions);
-			}
+			var positions = [1,2,4];
+		<?php
+			$dsn = "mysql:host = localhost; dbname = tasty; charset = UTF8";
+			$pdo = new PDO($dsn, "root", "");
+			if($pdo){
+				echo "console.log('연결 성공');";
+			};
+			
+			$statement = $pdo->prepare("select R.* from restaurants R LIMIT :kkk");
+			$statement -> bindValue('kkk',$row,PDO::PARAM_INT);
+			
+			$statement->execute();
+			$rows = $statement->fetchAll();
+			echo 'var postitions = ' . json_encode($rows) . ';';
+			?>
+			positions.forEach(pos => console.log(pos));
 		</script>
 	</body>
 
