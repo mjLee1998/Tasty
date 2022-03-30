@@ -36,273 +36,7 @@ $row = mysqli_fetch_assoc($result);
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <style type="text/css">
-      /* 기본 세팅 및 폰트 설정 */
-      body,
-      input,
-      select{
-        font-size: 24px;
-      }
-      a{
-        text-decoration:none;
-      }
-      a:visited{
-        color:black;
-      }
-      @font-face {
-        font-family: "TmonMonsori";
-        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff")
-          format("woff");
-        font-weight: normal;
-        font-style: normal;
-      }
-
-      /* 헤더 로고 및 사이트맵 스타일 */
-      .header a {
-        text-decoration: none;
-        color: black;
-      }
-      .header ul {
-        padding-left: 0;
-      }
-      .header li {
-        list-style: none;
-      }
-      .header ul {
-        margin: 14px 0px;
-      }
-      input[type="checkbox"] {
-        width: 24px;
-        height: 24px;
-      }
-      span {
-        font-size: 14px;
-        color: red;
-      }
-      body {
-        font-family: "TmonMonsori";
-        font-size: 14px;
-        margin: 0px 10px;
-      }
-      .header {
-        border: 1px solid black;
-        width: 380px;
-        height: 70px;
-        margin-top: 10px;
-        margin-bottom: 20px;
-      }
-      .header .logo {
-        width: 100px;
-        height: 50px;
-        margin-top: 8px;
-        margin-left: 10px;
-        float: left;
-        background-image: url(./img/logo.png);
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-      #hello {
-        margin-left: 5px;
-      }
-      .menu ul {
-        width: 250px;
-        height: 42px;
-        margin-left: 109px;
-      }
-      .menu li {
-        float: left;
-        margin-top: 25px;
-        margin-left: 10px;
-      }
-      #hello {
-        position: absolute;
-        left: 125px;
-        top: 15px;
-        margin-top: 14px;
-      }
-      
-      /* 메인 메뉴 스타일 */
-      .main_header {
-        border: 1px solid black;
-        width: 380px;
-        height: 38px;
-        margin-bottom: 20px;
-      }
-      .mainMenu1 {
-        font-size: 14px;
-        width: 100px;
-        height: 38px;
-        padding: 10px 10px 10px 0px;
-        margin-left:20px;
-        float:left;
-      }
-      .addRestaurant{
-        padding-left:10px;
-      }
-      .mainMenu2 {
-        font-size: 14px;
-        width: 100px;
-        height: 38px;
-        padding: 10px 10px 10px 0px;
-        margin-left:20px;
-        float:left;
-      }
-      .groupSelect{
-        padding-left:10px;
-      }
-      .mainMenu3 {
-        font-size: 14px;
-        width: 100px;
-        height: 38px;
-        padding: 10px 10px 10px 0px;
-        margin:0px 0px 0px 20px;
-        float:left;
-      }
-      .selectMember{
-        padding-left: 10px;
-      }
-/*       
-      .searchbar {
-        border: 1px solid black;
-        width: 380px;
-        height: 38px;
-        margin-bottom: 20px;
-      } */
-      .text {
-        width: 180px;
-        height: 38px;
-      }
-      #selectCategori{
-        font-size:16px;
-        margin-left:10px;
-        width: 60px;
-        height: 50px;
-      }
-      .searchButton {
-        width: 100px;
-        height: 38px;
-        margin-left: 16px;
-        margin-bottom: 20px;
-        font-size:14px;
-      }
-      
-      /* 지도 스타일 */
-      #map {
-        box-sizing:content-box;
-        border: 3px solid black;
-      }
-      </style>
-
-
-<!-- 오버레이 박스 css -->
-<style>
-  .overlaybox {
-    font-family: "helvetica";
-  }
-  .overlaybox {
-    position: relative;
-    width: 150px;
-    height: 180px;
-    border-radius: 5%;
-        position: absolute;
-        top: -215px;
-        left: -70px;
-        background-color: rgb(61, 63, 74);
-        padding: 15px 10px;
-      }
-      .overlaybox div,
-      ul {
-        margin: 0;
-        padding: 0;
-      }
-      .overlaybox li {
-        list-style: none;
-      }
-      .overlaybox .boxtitle {
-        color: #fff;
-        font-size: 16px;
-        font-weight: bold;
-        text-align: right;
-        margin-top: -8px;
-        margin-right: 3px;
-      }
-      .categori {
-        position: relative;
-        width: 127px;
-        height: 20px;
-        text-align: right;
-        font-size: 12px;
-        color: #fff;
-      }
-      .overlaybox .instaId {
-        color: #fff;
-        font-weight: bold;
-        font-size: 12px;
-        position: absolute;
-        top: 30px;
-        left: 10px;
-      }
-      .first .triangle {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0px;
-        height: 0px;
-        border-bottom: 36px solid green;
-        border-left: 0px solid transparent;
-        border-right: 36px solid transparent;
-        transform: rotate(90deg);
-      }
-      .overlaybox ul {
-        width: 127px;
-      }
-      .overlaybox li {
-        position: relative;
-        margin-bottom: 6px;
-        background: #2b2d36;
-        padding: 5px 8px;
-        color: #aaabaf;
-        line-height: 1;
-        border-radius: 5%;
-      }
-      .overlaybox li span {
-        display: inline-block;
-      }
-      .overlaybox li .addr {
-        font-size: 12px;
-        font-weight: bold;
-      }
-      .overlaybox li .addr1 {
-        font-size: 10px;
-        white-space: normal;
-      }
-      .overlaybox li .addr2 {
-        font-size: 10px;
-      }
-      .overlaybox .review {
-        width: 127px;
-        height: 70px;
-        overflow: hidden;
-        word-break: break-all;
-      }
-      .overlaybox .review:hover {
-        overflow: visible;
-      }
-      .overlaybox li .review1 {
-        font-size: 12px;
-        font-weight: bold;
-      }
-      .overlaybox li .review2 {
-        font-size: 10px;
-        white-space: normal;
-      }
-      .overlaybox li:hover {
-        color: #fff;
-        background: #d24545;
-        transform: scale(1.1);
-      }
-    </style>
-
+    <link rel="stylesheet" href="style/index.css">
     <script type="text/javascript"></script>
   </head>
   <body>
@@ -399,93 +133,72 @@ $row = mysqli_fetch_assoc($result);
         //전역변수 정의(오버레이 1개만 띄우기)
         var clickedOverlay = null;
 
-
+        </script>
+        
+        <script>
         // 마커를 표시할 위치와 title 객체 배열입니다
 
-        var positions = [
-          {
-            index: 1,
-            title: '올래곱창',
-            latlng: new kakao.maps.LatLng(<?php echo $row['location'] ?>),
-            content: '<div class="overlaybox">' +
-            '    <div class="boxtitle"><?php echo $row["restaurantName"]?></div>' +
-            '    <div class="first">' +
-            '        <div class="triangle"></div>' +
-            '        <div class="categori"><?php echo $row["categori"]?></div>' +
-            '    </div>' +
-            '    <div class="instaId"><?php echo $row["instaId"]?></div>' +
-            '    <ul class="information">' +
-            '        <li class="address">' +
-            '            <div class="addr">주소</div>' +
-            '            <div class="addr1"><?php echo $row["addr1"]?></div>' +
-            '            <div class="addr2"><?php echo $row["addr2"]?></div>' +
-            '        </li>' +
-            '        <li class="review">' +
-            '            <div class="review1">한줄평</div>' +
-            '            <div class="review2"><?php echo $row["review"]?></div>' +
-            '        </li>' +
-            '    </ul>' +
-            '</div>'
-          },
-          {
-            index: 2,
-            title: '아무데나',
-            latlng: new kakao.maps.LatLng(37.541108, 127.084060),
-            content: '<div class="overlaybox">' +
-            '    <div class="boxtitle">아무데나</div>' +
-            '    <div class="first">' +
-            '        <div class="triangle"></div>' +
-            '        <div class="categori">잡식</div>' +
-            '    </div>' +
-            '    <div class="instaId">@kwanidlfrk</div>' +
-            '    <ul class="information">' +
-            '        <li class="address">' +
-            '            <div class="addr">주소</div>' +
-            '            <div class="addr1">서울시 강남구 삼성동</div>' +
-            '            <div class="addr2">대치동 909번지 1층 4호</div>' +
-            '        </li>' +
-            '        <li class="review">' +
-            '            <div class="review1">한줄평</div>' +
-            '            <div class="review2">가뭄의 단비같이 찾아온 대치동의 숨은 맛집</div>' +
-            '        </li>' +
-            '    </ul>' +
-            '</div>'
-          },
-          {
-            index: 3,
-            title: '띵진이집',
-            latlng: new kakao.maps.LatLng(37.506888, 127.045361),
-            content: '<div class="overlaybox">' +
-            '    <div class="boxtitle">띵진이집</div>' +
-            '    <div class="first">' +
-            '        <div class="triangle"></div>' +
-            '        <div class="categori">본진</div>' +
-            '    </div>' +
-            '    <div class="instaId">@thing_lmj</div>' +
-            '    <ul class="information">' +
-            '        <li class="address">' +
-            '            <div class="addr">주소</div>' +
-            '            <div class="addr1">서울시 강남구 역삼동</div>' +
-            '            <div class="addr2">테헤란로 55길 46</div>' +
-            '        </li>' +
-            '        <li class="review">' +
-            '            <div class="review1">한줄평</div>' +
-            '            <div class="review2">천재가 사는 집</div>' +
-            '        </li>' +
-            '    </ul>' +
-            '</div>'
-          }
-        ];
-        console.log(positions[0].latlng);
+        //마커를 담을 배열
+			var positions = [];
 
-
-        // 마커 이미지의 이미지 주소입니다
-        var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-
-
-      </script>
+//num_rows()의 수만큼 각 행의 정보를 가져와서 마커에 정보를 담기
+  <?php
+    $query = "select R.* from restaurants R";
     
-      <script>
+    $result = mysqli_query($dbcon,$query);
+    while($row = mysqli_fetch_assoc($result)){
+
+      $test[] = $row; 
+      echo 'var positions = ' . json_encode($test) . ';';
+    };
+    
+
+?>
+
+
+var markers = [];
+for(i = 0; i < positions.length; i++){
+  var loc = positions[i].location;
+  var [lat, lng] = loc.split(',');
+  lat = Number(lat);
+  lng = Number(lng);
+  
+  var marker = {
+    index : positions[i].idx,
+    title : positions[i].restaurantName,
+    latlng : new kakao.maps.LatLng(lat, lng),
+  content : '<div class="overlaybox">' +
+  '    <div class="boxtitle">'+positions[i].restaurantName+'</div>' +
+  '    <div class="first">' +
+  '        <div class="triangle"></div>' +
+  '        <div class="categori">'+positions[i].categori+'</div>' +
+  '    </div>' +
+  '    <div class="instaId">'+positions[i].instaId+'</div>' +
+  '    <ul class="information">' +
+  '        <li class="address">' +
+  '            <div class="addr">주소</div>' +
+  '            <div class="addr1">'+positions[i].addr1+'</div>' +
+  '            <div class="addr2">'+positions[i].addr2+'</div>' +
+  '        </li>' +
+  '        <li class="review">' +
+  '            <div class="review1">한줄평</div>' +
+  '            <div class="review2">'+positions[i].review+'</div>' +
+  '        </li>' +
+  '    </ul>' +
+  '</div>'
+};
+  markers.push(marker);
+}
+console.log(markers);
+
+
+        var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+        // 마커 이미지의 이미지 주소입니다
+        
+        
+        </script>
+    
+    <script>
         //카테고리를 이용해서 마커 분류하기
         let createdMarker = [];
 
@@ -500,8 +213,8 @@ $row = mysqli_fetch_assoc($result);
           }
           
           //카테고리가 일치하는 마커만 다시 재생성
-          for(var i = 0; i < positions.length; i++){
-            const trueOrNot = positions[i].content.includes(selectedValue);
+          for(var i = 0; i < markers.length; i++){
+            const trueOrNot = markers[i].content.includes(selectedValue);
             // 마커 이미지의 이미지 크기 입니다
         var imageSize = new kakao.maps.Size(24, 35);
 
@@ -511,13 +224,13 @@ $row = mysqli_fetch_assoc($result);
         // 마커를 생성합니다
         var marker = new kakao.maps.Marker({
           map: map, // 마커를 표시할 지도
-          position: positions[i].latlng, // 마커를 표시할 위치
-          title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+          position: markers[i].latlng, // 마커를 표시할 위치
+          title : markers[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
         image : markerImage, // 마커 이미지
       });
       var customOverlay = new kakao.maps.CustomOverlay({
-        position: positions[i].latlng,
-        content: positions[i].content,
+        position: markers[i].latlng,
+        content: markers[i].content,
         clickable: true,
         xAnchor: 0.3,
         yAnchor: 0.91
@@ -570,7 +283,7 @@ $row = mysqli_fetch_assoc($result);
         }
           }
         }
-        console.log(positions);
+        console.log(markers);
       </script>
     </main>
 
