@@ -1,22 +1,3 @@
-<?php
-				
-				session_start();
-				include"./inc/dbcon.php";
-				
-				$sql = "select * from restaurants;";
-				
-				$result = mysqli_query($dbcon,$sql);
-				$row = mysqli_num_rows($result);
-				
-				
-				$set = "set @rownum = 0;";
-				mysqli_query($dbcon,$set);
-				$result = mysqli_query($dbcon,$sql);
-
-				mysqli_close($dbcon);
-				?>
-
-
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -31,22 +12,25 @@
 		<script src="jquery-3.6.0.min.js"></script>
 	</head>
 	<body>
-
+		
 		<script>
 			var positions = [1,2,4];
-		<?php
+			<?php
+
 			$dsn = "mysql:host = localhost; dbname = tasty; charset = UTF8";
 			$pdo = new PDO($dsn, "root", "");
 			if($pdo){
 				echo "console.log('연결 성공');";
 			};
 			
-			$statement = $pdo->prepare("select R.* from restaurants R LIMIT :kkk");
-			$statement -> bindValue('kkk',$row,PDO::PARAM_INT);
-			
+			$query = "select R.* from restaurants R";
+			$statement = $pdo->prepare($query);
 			$statement->execute();
-			$rows = $statement->fetchAll();
-			echo 'var postitions = ' . json_encode($rows) . ';';
+			
+			$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+			var_dump($result);
+			
+			echo 'var positions = ' . json_encode($result) . ';';
 			?>
 			positions.forEach(pos => console.log(pos));
 		</script>

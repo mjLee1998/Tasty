@@ -476,22 +476,8 @@ $row = mysqli_fetch_assoc($result);
             '</div>'
           }
         ];
+        console.log(positions[0].latlng);
 
-        // 마커 자동 생성 반복문
-        // <?php
-        // include"./inc/dbcon.php";
-        // $sql = "select * from restaurants;";
-
-
-        // var positions = [
-          
-        // ]
-
-
-
-
-
-        ?>
 
         // 마커 이미지의 이미지 주소입니다
         var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
