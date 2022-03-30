@@ -45,7 +45,8 @@ if(!$num){
 		mysqli_close($dbcon);
 		echo "
 		<script type=\"text/javascript\">
-			location.href = \"../index.php\";
+		alert(\"로그인 되었습니다.\");
+		history.go(-2);
 		</script>
 		";
 		};

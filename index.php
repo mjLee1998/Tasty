@@ -49,19 +49,19 @@ $row = mysqli_fetch_assoc($result);
           <ul>
             <?php
 					if(!$s_id){?>
-            <li><a href="./login/login.php">로그인</a></li>
-            <li><a href="./members/join.php">회원가입</a></li>
+            <li class="login"><a href="./login/login.php">로그인</a></li>
+            <li class="join"><a href="./members/join.php">회원가입</a></li>
             <?php } else { ?>
             <p id="hello">
               <?php echo $s_name; ?>님 &nbsp어서오세요
-              <li><a href="login/logout.php">로그아웃</a></li>
-              <li><a href="members/members.php">멤버</a></li>
+              <li class="logout"><a href="login/logout.php">로그아웃</a></li>
+              <li class="members"><a href="members/members.php">멤버</a></li>
               <!-- <li><a href="members/edit.php">정보수정</a></li> -->
               <?php if($s_id == "admin"){ ?>
-              <li><a href="admin/admin.php">관리자</a></li>
+              <li class="admin"><a href="admin/admin.php">관리자</a></li>
               <?php }; ?>
               <?php }; ?>
-              <li><a href="intro.php">소개</a></li>
+              <li class="intro"><a href="intro.php">소개</a></li>
             </p>
           </ul>
         </div>
@@ -92,18 +92,24 @@ $row = mysqli_fetch_assoc($result);
       </div>
       <!-- <div class="searchbar"></div> -->
       <div class="search">
-        <input type="text" class="text" placeholder="식당 이름을 입력"/>
-        <select name="selectCategori" id="selectCategori" class="selectCategori">
-          <option value="">카테고리</option>
-          <option value="한식">한식</option>
-          <option value="중식">중식</option>
-          <option value="일식">일식</option>
+        <div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="식당 이름을 입력" aria-label="식당 이름을 입력" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+          </div>
+    <button class="btn btn-outline-secondary" type="button">검색</button>
+  </div>
+        <select name="selectCategori" id="selectCategori" class="form-select" aria-label="Default select example">
+          <div class="options">
+            <option value="">카테고리</option>
+            <option value="한식">한식</option>
+            <option value="중식">중식</option>
+            <option value="일식">일식</option>
           <option value="양식">양식</option>
           <option value="분식">분식</option>
           <option value="스시">스시</option>
           <option value="회">회</option>
+        </div>
         </select>
-        <button type="button" class="searchButton" onclick="categorize()">검색</button>
       </div>
       <div id="map" style="width: 380px; height: 480px"></div>
       <script
@@ -204,7 +210,7 @@ console.log(markers);
         let createdMarker = [];
 
         function categorize(){
-          const selectedCategori = document.querySelector(".selectCategori");
+          const selectedCategori = document.querySelector("#selectCategori");
           const idx = selectedCategori.options.selectedIndex;
           const selectedValue = selectedCategori.options[idx].value;
           const categori = document.querySelector(".categori")

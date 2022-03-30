@@ -12,7 +12,7 @@ include"./inc/dbcon.php";
 // echo $sql;
 
 //DB에서 값 가져오기
-echo "안녕하세요 ".$s_id."님"."<br>"."<br>"."주소를 검색하여 선택하실 때, 도로명 주소를 선택하여 주세요."."<br><br>";
+// echo "안녕하세요 ".$s_id."님"."<br>"."<br>"."주소를 검색하여 선택하실 때, 도로명 주소를 선택하여 주세요."."<br><br>";
 //table restaurant 변수
 
 // mysqli_close($dbcon);
@@ -30,58 +30,14 @@ echo "안녕하세요 ".$s_id."님"."<br>"."<br>"."주소를 검색하여 선택
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>식당 등록</title>
-
-    <style type="text/css">
-      html,body,div,span,iframe,h1,h2,h3,h4,h5,h6,p,a,address,ul,li,fieldset,form,label,legend,footer,header,nav{
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 100%;
-        font: inherit;
-        vertical-align: baseline;
-      }
-      /* HTML5 display-role reset for older browsers */
-      article,
-      aside,
-      details,
-      figcaption,
-      figure,
-      footer,
-      header,
-      hgroup,
-      menu,
-      nav,
-      section {
-        display: block;
-      }
-      body {
-        line-height: 1;
-      }
-      ol,
-      ul {
-        list-style: none;
-      }
-      blockquote,
-      q {
-        quotes: none;
-      }
-      blockquote:before,
-      blockquote:after,
-      q:before,
-      q:after {
-        content: "";
-        content: none;
-      }
-      table {
-        border-collapse: collapse;
-        border-spacing: 0;
-      }
-    </style>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style/addRestaurant.css">
     <style>
-      body{
-        font-size:14px;
-        font-family:Helvetica;
-      }
       #map{
         z-index:0;
       }
@@ -91,20 +47,43 @@ echo "안녕하세요 ".$s_id."님"."<br>"."<br>"."주소를 검색하여 선택
     </style>
   </head>
   <body>
-    <a href="index.php">홈으로</a><br><br>
+    <header>
+      <div class="header">
+        <div class="logo">
+          <h1 class="tasty"><a href="index.php">Tasty</a></h1>
+        </div>
+        <div class="menu">
+        <ul>
+            <?php
+					if(!$s_id){?>
+            <li class="login"><a href="./login/login.php">로그인</a></li>
+            <li class="join"><a href="./members/join.php">회원가입</a></li>
+            <?php } else { ?>
+            <p id="hello">
+              <?php echo $s_name; ?>님 &nbsp어서오세요
+              <li class="logout"><a href="login/logout.php">로그아웃</a></li>
+              <li class="members"><a href="members/members.php">멤버</a></li>
+              <!-- <li><a href="members/edit.php">정보수정</a></li> -->
+              <?php if($s_id == "admin"){ ?>
+              <li class="admin"><a href="admin/admin.php">관리자</a></li>
+              <?php }; ?>
+              <?php }; ?>
+              <li class="intro"><a href="intro.php">소개</a></li>
+            </p>
+          </ul>
+        </div>
+      </div>
+    </header>
     <form name="addRestaurant_form" action="addRestaurantCheck.php" method="post" onsubmit="return a()">
-
-    <fieldset>
-      <legend>식당 등록</legend><br>
-      <p>
-      <label for="postcode"></label>
-        <input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly />
-        <input
-        type="button"
-        onclick="execDaumPostcode()"
-        value="우편번호 찾기"
-        /><br />
-      </p>
+      
+      <fieldset>
+        <legend>식당 등록</legend>
+        <label for="postcode"></label>
+        <div class="input-group mb-3">
+        <input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly class="form-control" aria-label="우편번호" aria-describedby="basic-addon2"/>
+        <div class="input-group-append"></div>
+        <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="btn btn-outline-secondary"/>
+      </div>
       <p>
         <label for="address"></label>
         <input type="text" name="address" id="address" placeholder="주소" readonly/><br />
@@ -113,13 +92,13 @@ echo "안녕하세요 ".$s_id."님"."<br>"."<br>"."주소를 검색하여 선택
         <label for="extraAddress"></label>
         <input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목" readonly/>
       </p>
-        
+      
       <p>
         <label for="restaurantName"></label>
-        <input type="text" name="restaurantName" value="식당 이름"/>
+        <input type="text" name="restaurantName" placeholder="식당 이름"/>
         <label for="instaId"></label>
-        <input type="text" name="instaId" value="Instagram 아이디"/>
-
+        <input type="text" name="instaId" placeholder="Instagram 아이디"/>
+        
         <label for="categori"></label>
         <select name="categori" id="categori">
           <option value="한식">한식</option>
@@ -132,93 +111,94 @@ echo "안녕하세요 ".$s_id."님"."<br>"."<br>"."주소를 검색하여 선택
         </select>
         
         <label for="review"></label>
-        <input type="text" name="review" value="review">
-
+        <input type="text" name="review" placeholder="한줄평">
+        
         <label for="location"></label>
         <input type="text" name="location" id="location" value="">
       </p>
       
     </fieldset>
-
+    
     <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
     <div
-      id="layer"
-      style="
+    id="layer"
+    style="
         display: none;
         position: fixed;
         overflow: hidden;
         z-index: 1;
         -webkit-overflow-scrolling: touch;
-      "
+        "
     >
-      <img
-        src="//t1.daumcdn.net/postcode/resource/images/close.png"
-        id="btnCloseLayer"
-        style="
+    <img
+    src="//t1.daumcdn.net/postcode/resource/images/close.png"
+    id="btnCloseLayer"
+    style="
           cursor: pointer;
           position: absolute;
           right: -3px;
           top: -3px;
           z-index: 1;
-        "
+          "
         onclick="closeDaumPostcode()"
         alt="닫기 버튼"
-      />
-    </div>
-
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
-    <!-- 지도 파트 -->
-    <div
+        />
+      </div>
+      
+      <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+      
+      <!-- 지도 파트 -->
+      <div
       id="map"
       style="width: 300px; height: 300px; margin-top: 10px; display: none"
-    ></div>
-
-    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=26fdf226a690f77f33e7a8f67ee40ac1&libraries=services"></script>
-    <div class="registerInfo">
-      <button type="submit" id="regist">등록하기</button>
-    </div>
-
-    <script>
-      var mapContainer = document.getElementById("map"), // 지도를 표시할 div
+      ></div>
+      
+      <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=26fdf226a690f77f33e7a8f67ee40ac1&libraries=services"></script>
+      <div class="button">
+        <button type="submit" id="regist" class="btn">등록하기</button>
+        <button type="button" onclick="history.back()" class="btn">취소하기</button>
+      </div>
+      
+      <script>
+        var mapContainer = document.getElementById("map"), // 지도를 표시할 div
         mapOption = {
           center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
           level: 5, // 지도의 확대 레벨
         };
-
-      //지도를 미리 생성
-      var map = new daum.maps.Map(mapContainer, mapOption);
-      //주소-좌표 변환 객체를 생성
-      var geocoder = new daum.maps.services.Geocoder();
-      //마커를 미리 생성
-      var marker = new daum.maps.Marker({
-        position: new daum.maps.LatLng(37.537187, 127.005476),
-        map: map,
+        
+        //지도를 미리 생성
+        var map = new daum.maps.Map(mapContainer, mapOption);
+        //주소-좌표 변환 객체를 생성
+        var geocoder = new daum.maps.services.Geocoder();
+        //마커를 미리 생성
+        var marker = new daum.maps.Marker({
+          position: new daum.maps.LatLng(37.537187, 127.005476),
+          map: map,
       });
-
       
-    </script>
+      
+      </script>
 
 
-    <script>
-      // 우편번호 찾기 화면을 넣을 element
-      var element_layer = document.getElementById("layer");
-
-      function closeDaumPostcode() {
-        // iframe을 넣은 element를 안보이게 한다.
+<script>
+  // 우편번호 찾기 화면을 넣을 element
+  var element_layer = document.getElementById("layer");
+  
+  function closeDaumPostcode() {
+    // iframe을 넣은 element를 안보이게 한다.
         element_layer.style.display = "none";
       }
-
+      
       function execDaumPostcode() {
         new daum.Postcode({
           oncomplete: function (data) {
             // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
+            
             // 각 주소의 노출 규칙에 따라 주소를 조합한다.
             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
             var addr = ""; // 주소 변수
             var extraAddr = ""; // 참고항목 변수
-
+            
             //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
             if (data.userSelectedType === "R") {
               // 사용자가 도로명 주소를 선택했을 경우
@@ -227,7 +207,7 @@ echo "안녕하세요 ".$s_id."님"."<br>"."<br>"."주소를 검색하여 선택
               // 사용자가 지번 주소를 선택했을 경우(J)
               addr = data.jibunAddress;
             }
-
+            
             // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
             if (data.userSelectedType === "R") {
               // 법정동명이 있을 경우 추가한다. (법정리는 제외)
@@ -238,9 +218,9 @@ echo "안녕하세요 ".$s_id."님"."<br>"."<br>"."주소를 검색하여 선택
               // 건물명이 있고, 공동주택일 경우 추가한다.
               if (data.buildingName !== "" && data.apartment === "Y") {
                 extraAddr +=
-                  extraAddr !== ""
-                    ? ", " + data.buildingName
-                    : data.buildingName;
+                extraAddr !== ""
+                ? ", " + data.buildingName
+                : data.buildingName;
               }
               // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
               if (extraAddr !== "") {
@@ -339,3 +319,4 @@ echo "안녕하세요 ".$s_id."님"."<br>"."<br>"."주소를 검색하여 선택
     </script>
   </body>
 </html>
+

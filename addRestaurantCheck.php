@@ -29,7 +29,7 @@ $sql = "insert into restaurants(restaurantName, categori, instaId, addr1,addr2, 
 
 echo $sql;
 
-mysqli_query($dbcon,$sql);
+// mysqli_query($dbcon,$sql);
 
 mysqli_close($dbcon);
 
