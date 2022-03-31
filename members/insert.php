@@ -8,10 +8,12 @@ $email_id = $_GET["email_id"];
 $email_dns = $_GET["email_dns"];
 $email = $email_id."@".$email_dns;
 $birth = $_GET["birth"];
-$postalCode = $_GET["postalCode"];
-$addr1 = $_GET["addr1"];
-$addr2 = $_GET["addr2"];
+$postalCode = $_GET["postcode"];
+$addr1 = $_GET["address"];
+$addr2 = $_GET["detailAddress"];
+$addr3 = $_GET["extraAddress"];
 $agree = $_GET["agree"];
+$addr1 = $addr1.$addr3;
 
 $reg_date = date("Y-m-d");
 
