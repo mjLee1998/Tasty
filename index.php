@@ -43,7 +43,7 @@ $row = mysqli_fetch_assoc($result);
   <body>
     <header class="header">
         <div class="logo">
-          <h1 class="tasty">Tasty</h1>
+          <h1 class="tasty"><a href="index.php" style="color: #38a69b;">Tasty</a></h1>
         </div>
         <div class="menu">
           <ul>
@@ -79,8 +79,8 @@ $row = mysqli_fetch_assoc($result);
               </div>
             </div>
             <div class="mainMenu2">
-              <div class="selectGroup">
-                그룹 별로 보기
+              <div class="restaurantList">
+                식당 목록 보기
               </div>
             </div>
             <div class="mainMenu3">
@@ -96,7 +96,7 @@ $row = mysqli_fetch_assoc($result);
   <input type="text" class="form-control" placeholder="식당 이름을 입력" aria-label="식당 이름을 입력" aria-describedby="basic-addon2">
   <div class="input-group-append">
           </div>
-    <button class="btn btn-outline-secondary" type="button">검색</button>
+    <button class="btn btn-outline-secondary" type="button" onclick="categorize()">검색</button>
   </div>
         <select name="selectCategori" id="selectCategori" class="form-select" aria-label="Default select example">
           <div class="options">

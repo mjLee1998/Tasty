@@ -40,6 +40,7 @@ include"./inc/dbcon.php";
     <style>
       #map{
         z-index:0;
+        margin-left:3px;
       }
       #location{
         display:none;
@@ -47,6 +48,44 @@ include"./inc/dbcon.php";
     </style>
   </head>
   <body>
+      <script>
+        function a(){
+          var postcode = document.querySelector("#postcode");
+          var address = document.querySelector("#address");
+          var detailAddress = document.querySelector("#detailAddress");
+          var extraAddress = document.querySelector("#extraAddress");
+          var restaurantName = document.querySelector("#restaurantName");
+          var instaId = document.querySelector("#instaId");
+          var categori = document.querySelector("#categori");
+          var review = document.querySelector("#review");
+          var location = document.querySelector("#location");
+
+          if(postcode.value == ""){
+            alert("우편번호 찾기를 눌러주세요.");
+            return false;
+          }
+          if(detailAddress.value == ""){
+            alert("상세 주소를 입력해주세요.");
+            detailAddress.focus();
+            return false;
+          }
+          if(restaurantName.value == ""){
+            alert("식당 이름을 입력해주세요.");
+            restaurantName.focus();
+            return false;
+          }
+          if(instaId.value == ""){
+            alert("Instagram ID를 입력해주세요.");
+            instaId.focus();
+            return false;
+          }
+          if(review.value == ""){
+            alert("한줄평을 입력해주세요.");
+            review.focus();
+            return false;
+          }
+        }
+      </script>
     <header>
       <div class="header">
         <div class="logo">
@@ -86,21 +125,25 @@ include"./inc/dbcon.php";
       </div>
       <p>
         <label for="address"></label>
-        <input type="text" name="address" id="address" placeholder="주소" readonly/><br />
+        <input style="width:307px; margin-bottom:10px;" type="text" name="address" id="address" placeholder="주소(자동 기입)" readonly/><br />
         <label for="detailAddress"></label>
-        <input type="text" name="detailAddress" id="detailAddress" placeholder="상세주소" />
+        <input style="width:150px; " type="text" name="detailAddress" id="detailAddress" placeholder="상세주소(필수)" />
         <label for="extraAddress"></label>
-        <input type="text" name="extraAddress" id="extraAddress" placeholder="참고항목" readonly/>
+        <input style="width:150px;" type="text" name="extraAddress" id="extraAddress" placeholder="참고항목(자동 기입)" readonly/>
       </p>
       
       <p>
         <label for="restaurantName"></label>
-        <input type="text" name="restaurantName" placeholder="식당 이름"/>
+        <input style="width:150px;" type="text" name="restaurantName" placeholder="식당 이름(필수)" id="restaurantName"/>
         <label for="instaId"></label>
-        <input type="text" name="instaId" placeholder="Instagram 아이디"/>
+        <input style="width:150px;" type="text" name="instaId" placeholder="Instagram ID(필수)" id="instaId"/>
+        
+        
+        <label for="review"></label>
+        <input style="width:210px;margin-left:4px; margin-top:10px; line-height:14px; overflow:hidden;" type="text" name="review" placeholder="한줄평(필수)">
         
         <label for="categori"></label>
-        <select name="categori" id="categori">
+        <select style="width:84px; height:30px; margin-top:7px; margin-right:83px;" name="categori" id="categori" class="form-select" aria-label="Default select example">
           <option value="한식">한식</option>
           <option value="중식">중식</option>
           <option value="일식">일식</option>
@@ -109,10 +152,6 @@ include"./inc/dbcon.php";
           <option value="스시">스시</option>
           <option value="회">회</option>
         </select>
-        
-        <label for="review"></label>
-        <input type="text" name="review" placeholder="한줄평">
-        
         <label for="location"></label>
         <input type="text" name="location" id="location" value="">
       </p>
@@ -150,13 +189,13 @@ include"./inc/dbcon.php";
       <!-- 지도 파트 -->
       <div
       id="map"
-      style="width: 300px; height: 300px; margin-top: 10px; display: none"
+      style="width: 307px; height: 300px; display: none; margin-bottom:10px;"
       ></div>
       
       <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=26fdf226a690f77f33e7a8f67ee40ac1&libraries=services"></script>
       <div class="button">
-        <button type="submit" id="regist" class="btn">등록하기</button>
-        <button type="button" onclick="history.back()" class="btn">취소하기</button>
+        <button style="margin-left:4px;margin-right:10px;" type="submit" id="regist" class="btn">등록하기</button>
+        <button type="button" onclick="history.go(-1)" class="btn">취소하기</button>
       </div>
       
       <script>

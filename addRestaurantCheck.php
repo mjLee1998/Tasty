@@ -29,13 +29,14 @@ $sql = "insert into restaurants(restaurantName, categori, instaId, addr1,addr2, 
 
 echo $sql;
 
-// mysqli_query($dbcon,$sql);
+mysqli_query($dbcon,$sql);
 
 mysqli_close($dbcon);
 
 echo "
 <script type=\"text/javascript\">
-	location.href=\"https://localhost/tasty/complete.php\"
+alert('식당 등록이 완료되었습니다~!!');
+location.href=\"https://localhost/tasty/index.php\"
 </script>
 ";
 ?>

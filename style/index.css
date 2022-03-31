@@ -6,8 +6,8 @@ input {
 a {
   text-decoration: none;
 }
-a:visited {
-  color: black;
+h1 a:visited {
+  color: #38a69b;
 }
 @font-face {
   font-family: "TmonMonsori";
@@ -129,9 +129,6 @@ span {
   padding: 10px 10px 10px 0px;
   margin-left: 20px;
   float: left;
-}
-.groupSelect {
-  padding-left: 10px;
 }
 .mainMenu3 {
   color: #403d40;
