@@ -52,11 +52,28 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
         </div>
       </div>
     </header>
-    <main>
-
+    <main style="width:300px; margin-left:30px; margin-bottom:50px; margin-top:50px;">
+      <div class="introduce" style="margin-bottom:50px;">
+        <h5 style="color:rgb(61, 63, 74)">페이지 소개</h5>
+        <h6 style="color:rgb(61, 63, 74)">
+          Tasty는 친구나 지인들과 맛집을 공유하는 사이트입니다. 메인 페이지로 이동하셔서 사용해보시고 회원가입하셔서 직접 식당을 등록해보세요.
+        </h6>
+      </div>
+      <div class="creater">
+        <h5 style="color:rgb(61, 63, 74)">제작자</h5>
+        <h6 style="color:rgb(61, 63, 74)">
+          기획 : 이명진, 강유상<br>
+          제작 : 이명진
+        </h6>
+      </div>
     </main>
-    <footer>
-      
+    <footer style="width:300px; margin-left:30px;">
+      <div class="url">
+        <h6>
+        <a href="https://github.com/mjLee1998" style="color:#38a69b;">https://github.com/mjLee1998</a>
+        <a href="https://velog.io/@audwls172" style="color:#38a69b;">https://velog.io/@audwls172</a>
+        </h6>
+      </div>
     </footer>
 </body>
 </html>

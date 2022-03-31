@@ -24,23 +24,51 @@ include "inc/admin_session.php"
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<style type="text/css"> 
-		body{font-size:16px}
-		a{text-decoration:none; color:blue;}
-		a:hover{color:green;}
-	</style>
-	<script type="text/javascript">
-
-	</script>
+  <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+	<link rel="stylesheet" href="../style/admin.css">
 </head>
 <body>
-	<h2>*관리자*</h2>
-	<p>관리자 문서입니다.</p>
-	<p>"<?php echo $s_name; ?>"님, 안녕하세요.</p>
-	<p>
-				<a href="../index.php">홈으로</a>
-				<a href="members/list.php">회원 관리</a>
+<header>
+      <div class="header">
+        <div class="logo">
+          <h1 class="tasty"><a href="../index.php" style="color:#38a69b; margin-bottom:10px;">Tasty</a></h1>
+        </div>
+        <div class="menu">
+        <ul>
+            <?php
+					if(!$s_id){?>
+            <li class="login"><a href="../login/login.php">로그인</a></li>
+            <li class="join"><a href="../members/join.php">회원가입</a></li>
+            <?php } else { ?>
+            <p id="hello">
+              <?php echo $s_name; ?>님 &nbsp어서오세요
+              <li class="logout"><a href="../login/logout.php">로그아웃</a></li>
+              <li class="members"><a href="../members/members.php">멤버</a></li>
+              <!-- <li><a href="members/edit.php">정보수정</a></li> -->
+              <?php if($s_id == "admin"){ ?>
+              <!-- <li class="admin"><a href="admin/admin.php">관리자</a></li> -->
+              <?php }; ?>
+              <?php }; ?>
+              <li class="intro"><a href="../intro.php">소개</a></li>
+            </p>
+          </ul>
+        </div>
+      </div>
+    </header>
+		<main>
+			<h4>*관리자* </h4>
+			<p>관리자 페이지입니다.</p>
+			<p>
+				<a href="../index.php">홈으로</a><br>
+				<a href="members/list.php">멤버 관리</a><br>
+				<a href="..//list.php">식당 관리</a><br>
 				<a href="../login/logout.php">로그아웃</a>
 			</p>
-</body>
+		</main>
+	</body>
 </html>
