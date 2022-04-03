@@ -46,7 +46,10 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
         var pwd = document.getElementById("pwd");
         var repwd = document.getElementById("repwd");
         var mobile = document.getElementById("mobile");
-
+        var postcode = document.getElementById("postcode");
+        var address = document.getElementById("address");
+        var detailAddress = document.getElementById("detailAddress");
+        console.log(postcode.value);
         if (u_name.value == "") {
           var err_txt = document.querySelector(".err_name");
           err_txt.innerHTML = "<em>이름을 입력하세요.</em>";
@@ -101,6 +104,11 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
           mobile.focus();
           return false;
         }
+        if(postcode.value == ""){
+          var err_txt = document.querySelector(".err_postcode");
+          err_txt.textContent = "우편번호 찾기 버튼을 눌러주세요.";
+          return false;
+        }
         if (!agree.checked) {
           alert("약관 동의가 필요합니다.");
           agree.focus();
@@ -121,13 +129,6 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
           "width=600, height=250, left=0, top=0"
         );
       }
-      function address_search() {
-        window.open(
-          "search_adress.php",
-          "",
-          "width=600px, height=250px, left=0, top=0"
-        );
-      }
     </script>
   </head>
   <body>
@@ -135,7 +136,7 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
       <div class="header">
         <div class="logo">
           <h1 class="tasty">
-            <a href="index.php" style="color: #38a69b; margin-bottom: 10px"
+            <a href="../index.php" style="color: #38a69b; margin-bottom: 10px"
               >Tasty</a
             >
           </h1>
@@ -194,11 +195,11 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
           <br />
           <span class="err_mobile">"-" 없이 숫자만 입력</span>
         </p>
-
+        
         <p>
           <label for="email">이메일</label>
-          <input type="text" name="email_id" id="email_id" /> @
-          <input type="text" name="email_dns" id="email_dns" />
+          <input type="text" name="email_id" id="email_id" style="width:80px; margin-left:13px;"/> @
+          <input type="text" name="email_dns" id="email_dns" style="width:80px;"/>
           <select name="email_sel" id="email_sel" onchange="change_email()"class="form-select" aria-label="Default select example">
             <option value="">직접 입력</option>
             <option value="naver.com">NAVER</option>
@@ -206,20 +207,21 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
             <option value="gmail.com">GOOGLE</option>
           </select>
         </p>
-
+        
         <p>
           <label for="birth">생년월일</label>
           <input type="text" name="birth" id="birth" />
           <br />
           <span>* 8자리 숫자로 입력 ex) 20211022</span>
         </p>
-
+        
         <label for="postcode"></label>
         <div class="input-group mb-3">
-        <input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly class="form-control" aria-label="우편번호" aria-describedby="basic-addon2"/>
-        <div class="input-group-append"></div>
-        <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="btn btn-outline-secondary"/>
-      </div>
+          <input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly class="form-control" aria-label="우편번호" aria-describedby="basic-addon2"/>
+          <div class="input-group-append"></div>
+          <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="btn btn-outline-secondary"/>
+          <span class="err_postcode"></span>
+        </div>
       <p>
         <label for="address"></label>
         <input style="width:307px; margin-bottom:10px;" type="text" name="address" id="address" placeholder="주소(자동 기입)" readonly/><br />
@@ -234,7 +236,7 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
         display: none;
         position: fixed;
         overflow: hidden;
-        z-index: 1;
+        z-index: 3;
         -webkit-overflow-scrolling: touch;
         "
     >

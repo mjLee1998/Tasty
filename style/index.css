@@ -49,7 +49,6 @@ span {
   color: red;
 }
 .header {
-  /* border: 3px solid #d9a23d; */
   box-sizing: content-box;
   width: 380px;
   height: 70px;
@@ -101,7 +100,6 @@ span {
 
 /* 메인 메뉴 스타일 */
 .main_header {
-  /* border: 3px solid #d9a23d; */
   box-sizing: content-box;
   width: 380px;
   height: 38px;
@@ -192,7 +190,6 @@ span {
 /* 지도 스타일 */
 #map {
   box-sizing: content-box;
-  border: 3px solid #e4edf2;
 }
 
 /* 오버레이 스타일 */

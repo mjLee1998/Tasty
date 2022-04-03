@@ -5,10 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<style type="text/css">
-		span{color: red;}
-		#u_id{margin-left:13px;}
-	</style>
+	<link rel="stylesheet" href="../style/login.css">
 	<script type="text/javascript">
 		function login_check(){
 			var user_id = document.getElementById("u_id");
@@ -44,13 +41,27 @@
 	</script>
 </head>
 <body>
+<header>
+      <div class="header">
+        <div class="logo">
+          <h1 class="tasty"><a href="../index.php" style="color:#38a69b; margin-bottom:10px;">Tasty</a></h1>
+        </div>
+        <div class="menu">
+        <ul>
+            <li class="join"><a href="../members/join.php">회원가입</a></li>
+              <li class="intro"><a href="../intro.php">소개</a></li>
+            </p>
+          </ul>
+        </div>
+      </div>
+    </header>
 	<form name="login_form" action="logincheck.php" method="post" onsubmit="return login_check()">
 
 		<fieldset>
 			<legend>로그인</legend>
 			<p>
 				<label for="u_id">아이디</label>
-				<input type="text" name="u_id" id="u_id" autofocus>
+				<input type="text" name="u_id" id="u_id"  autofocus>
 				<br>
 				<span class="err_u_id"></span>
 			</p>

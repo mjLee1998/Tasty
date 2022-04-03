@@ -111,7 +111,7 @@ $row = mysqli_fetch_assoc($result);
         </div>
         </select>
       </div>
-      <div id="map" style="width: 380px; height: 480px"></div>
+      <div id="map" style="width: 380px; height: 480px;"></div>
       <script
         type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=26fdf226a690f77f33e7a8f67ee40ac1"
