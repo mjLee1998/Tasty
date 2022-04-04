@@ -9,9 +9,11 @@ $birth = $_POST["birth"];
 $repwd = $_POST["repwd"];
 $mobile = $_POST["mobile"];
 $email = $_POST["email_id"]."@".$_POST["email_dns"];
-$postalCode = $_POST["postalCode"];
-$addr1 = $_POST["addr1"];
-$addr2 = $_POST["addr2"];
+$postalCode = $_POST["postcode"];
+$addr1 = $_POST["address"];
+$addr2 = $_POST["detailAddress"];
+$addr3 = $_POST["extraAddress"];
+$addr1 = $addr1.$addr3;
 
 echo "비밀번호 : ".$pwd."<br>";
 echo "생년월일 : ".$birth."<br>";
@@ -44,7 +46,7 @@ mysqli_close($dbcon);
 echo "
 <script type=\"text/javascript\">
 	alert(\"정보가 수정되었습니다.\");
-	location.href=\"https://localhost/website/admin/members/list.php\"
+	location.href=\"https://localhost/tasty/admin/members/memberList.php\"
 </script>
 ";
 
