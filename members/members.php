@@ -58,7 +58,7 @@ if($e_pageNum > $total_page){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 목록</title>
-		<link rel="stylesheet" href="../../style/memberList.css">
+		<link rel="stylesheet" href="../style/members.css">
     <script type="text/javascript">
 			function del_check(idx){
             var i = confirm("정말 삭제하시겠습니까? 삭제한 아이디는 사용하실 수 없습니다.");
@@ -72,24 +72,23 @@ if($e_pageNum > $total_page){
 <header>
       <div class="header">
         <div class="logo">
-          <h1 class="tasty"><a href="../../index.php" style="color:#38a69b; margin-bottom:10px;">Tasty</a></h1>
+          <h1 class="tasty"><a href="../index.php" style="color:#38a69b; margin-bottom:10px;">Tasty</a></h1>
         </div>
         <div class="menu">
         <ul>
             <p id="hello">
               <?php echo $s_name; ?>님 &nbsp어서오세요
-              <li class="logout"><a href="../../login/logout.php">로그아웃</a></li>
-              <li class="members"><a href="../../members/members.php">멤버</a></li>
+              <li class="logout"><a href="../login/logout.php">로그아웃</a></li>
               <?php if($s_id == "admin"){ ?>
-              <li class="admin"><a href="../admin.php">관리자</a></li>
+              <li class="admin"><a href="../admin/admin.php">관리자</a></li>
               <?php }; ?>
-              <li class="intro"><a href="../../intro.php">소개</a></li>
+              <li class="intro"><a href="../intro.php">소개</a></li>
             </p>
           </ul>
         </div>
       </div>
     </header>
-<h2>멤버 관리</h2>
+<h2>멤버 목록</h2>
 	<p>
 	</p>
 	<hr>

@@ -4,21 +4,15 @@ session_start();
 
 $s_id = isset($_SESSION["s_id"])? $_SESSION["s_id"]:"";
 $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
-$instaId = isset($_SESSION["instaId"])? $_SESSION["instaId"]:"";
-echo $instaId;
-
-
 
 include"./inc/dbcon.php";
-// echo $sql;
 
+
+
+$sql = "select * from members where u_id = '$s_id';";
 //DB에서 값 가져오기
-// echo "안녕하세요 ".$s_id."님"."<br>"."<br>"."주소를 검색하여 선택하실 때, 도로명 주소를 선택하여 주세요."."<br><br>";
-//table restaurant 변수
-
-// mysqli_close($dbcon);
-
-
+$result = mysqli_query($dbcon,$sql);
+$row = mysqli_fetch_assoc($result);
 
 ?>
 
@@ -94,19 +88,12 @@ include"./inc/dbcon.php";
         </div>
         <div class="menu">
         <ul>
-            <?php
-					if(!$s_id){?>
-            <li class="login"><a href="./login/login.php">로그인</a></li>
-            <li class="join"><a href="./members/join.php">회원가입</a></li>
-            <?php } else { ?>
             <p id="hello">
               <?php echo $s_name; ?>님 &nbsp어서오세요
               <li class="logout"><a href="login/logout.php">로그아웃</a></li>
               <li class="members"><a href="members/members.php">멤버</a></li>
-              <!-- <li><a href="members/edit.php">정보수정</a></li> -->
               <?php if($s_id == "admin"){ ?>
               <li class="admin"><a href="admin/admin.php">관리자</a></li>
-              <?php }; ?>
               <?php }; ?>
               <li class="intro"><a href="intro.php">소개</a></li>
             </p>
@@ -137,7 +124,7 @@ include"./inc/dbcon.php";
         <label for="restaurantName"></label>
         <input style="width:150px;" type="text" name="restaurantName" placeholder="식당 이름(필수)" id="restaurantName"/>
         <label for="instaId"></label>
-        <input style="width:150px;" type="text" name="instaId" placeholder="Instagram ID(필수)" id="instaId"/>
+        <input style="width:150px;" type="text" name="instaId" value="<?php echo $row['instaId']; ?>" id="instaId" readonly/>
         
         
         <label for="review"></label>

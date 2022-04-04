@@ -22,8 +22,9 @@ $array = mysqli_fetch_array($result);
     <style>
         body,input,select,option,button{font-size:24px}
         input[type=checkbox]{width:24px;height:24px}
-        span{font-size: 14px; color: red;}
+        span{font-size: 14px; color: black;}
     </style>
+    <link rel="stylesheet" href="../../style/memberEdit.css">
     <script type="text/javascript">
         function edit_check (){
             var pwd = document.getElementById("pwd");
@@ -50,9 +51,6 @@ $array = mysqli_fetch_array($result);
             var sel_value = email_sel.options[idx].value;
             email_dns.value = sel_value;
         };
-        function adress_search(){
-            window.open("../../members/search_adress.php","","width=600px, height=250px, left=0, top=0")
-        };
         function del_check(){
             var i = confirm("정말 삭제하시겠습니까? 삭제한 아이디는 사용하실 수 없습니다.");
             if(i == true){
@@ -62,6 +60,33 @@ $array = mysqli_fetch_array($result);
     </script>
 </head>
 <body>
+<header>
+    <div class="header">
+        <div class="logo">
+        <h1 class="tasty"><a href="index.php" style="color:#38a69b; margin-bottom:10px;">Tasty</a></h1>
+        </div>
+        <div class="menu">
+        <ul>
+            <?php
+					if(!$s_id){?>
+            <li class="login"><a href="./login/login.php">로그인</a></li>
+            <li class="join"><a href="./members/join.php">회원가입</a></li>
+            <?php } else { ?>
+            <p id="hello">
+            <?php echo $s_name; ?>님 &nbsp어서오세요
+            <li class="logout"><a href="login/logout.php">로그아웃</a></li>
+            <li class="members"><a href="members/members.php">멤버</a></li>
+            <!-- <li><a href="members/edit.php">정보수정</a></li> -->
+            <?php if($s_id == "admin"){ ?>
+            <li class="admin"><a href="admin/admin.php">관리자</a></li>
+            <?php }; ?>
+            <?php }; ?>
+            <li class="intro"><a href="intro.php">소개</a></li>
+            </p>
+        </ul>
+        </div>
+    </div>
+    </header>
     <form name="edit_form" action="edit_check.php" method="post" onsubmit="return edit_check()">
         <fieldset>
             <legend>회원정보 수정</legend>
@@ -77,9 +102,10 @@ $array = mysqli_fetch_array($result);
             </p>
 
             <p>
-                <label for="pwd">비밀번호</label>
+                <label for="pwd"><span>비밀번호</span></label>
                 <!-- <input type="password" name="pwd" id="pwd"> -->
                 <input type="password" name="pwd" id="pwd">
+                <br>
                 <span>비워둘 경우 비밀번호가 변경되지 않음</span>
                 <br>
                 <span class="err_pwd"></span>

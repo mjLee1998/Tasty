@@ -36,9 +36,9 @@ $row = mysqli_fetch_assoc($result);
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style/index.css">
+    <link rel="stylesheet" href="style/index.css?after">
     <script type="text/javascript"></script>
-    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <header class="header">
@@ -80,7 +80,9 @@ $row = mysqli_fetch_assoc($result);
             </div>
             <div class="mainMenu2">
               <div class="restaurantList">
-                식당 목록 보기
+                <a href="restaurantsList.php">
+                  식당 목록 보기
+                </a>
               </div>
             </div>
             <div class="mainMenu3">

@@ -20,7 +20,6 @@ $result = mysqli_query($dbcon,$sql);
 // mysqli_num_rows 
 // echo mysqli_num_rows($result);
 $num = mysqli_num_rows($result);
-$num;
 
 ?>
 <!DOCTYPE html>
@@ -64,7 +63,7 @@ $num;
 				<br><br>
 				<?php	} ?>
 		
-		<a href="#" onclick="history.back()">[다시 검색]</a>
+		<a href="search_id.php">[다시 검색]</a>
 	</p>
 </body>
 </html>

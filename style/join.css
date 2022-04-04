@@ -2,6 +2,9 @@ body,
 input {
   font-size: 20px;
 }
+span {
+  color: #38a69b;
+}
 a {
   text-decoration: none;
 }

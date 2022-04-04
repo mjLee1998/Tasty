@@ -5,9 +5,13 @@ input {
 }
 a {
   text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: black;
 }
 h1 a:visited {
-  color: #38a69b;
+  color: black;
 }
 @font-face {
   font-family: "TmonMonsori";
