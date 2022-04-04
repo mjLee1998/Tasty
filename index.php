@@ -85,10 +85,12 @@ $row = mysqli_fetch_assoc($result);
                 </a>
               </div>
             </div>
-            <!-- <div class="mainMenu3">
+            <div class="mainMenu3">
               <div class="selectMember">
-                멤버별로 보기
-              </div> -->
+                <a href="howToUse.php">
+                  이용 방법 보기
+                </a>
+              </div>
           <?php } ?>
         </div>
       </div>
