@@ -8,6 +8,7 @@ $email_id = $_GET["email_id"];
 $email_dns = $_GET["email_dns"];
 $email = $email_id."@".$email_dns;
 $birth = $_GET["birth"];
+$instaId = $_GET["instaId"];
 $postalCode = $_GET["postcode"];
 $addr1 = $_GET["address"];
 $addr2 = $_GET["detailAddress"];
@@ -24,6 +25,7 @@ echo "비밀번호 확인 : ".$repwd."<br>";
 echo "전화번호 : ".$mobile."<br>";
 echo "이메일 : ".$email_id."@".$email_dns."<br>";
 echo "생년월일 : ".$birth."<br>";
+echo "인스타ID : ".$instaId."<br>";
 echo "우편번호 : ".$postalCode."<br>";
 echo "기본주소 : ".$addr1."<br>";
 echo "상세주소 : ".$addr2."<br>";
@@ -33,7 +35,7 @@ echo "동의 :".$agree."<br>";
 $dbcon = mysqli_connect("localhost", "root", "", "tasty") or die("접속에 실패했습니다.");
 mysqli_set_charset($dbcon,"utf8");
 
-$sql = "insert into members(u_name, u_id, pwd, birth, postalCode, addr1, addr2, email, mobile, reg_date) values ('$u_name', '$u_id', '$pwd', '$birth', '$postalCode', '$addr1', '$addr2', '$email', '$mobile', '$reg_date');";
+$sql = "insert into members(u_name, u_id, pwd, birth, postalCode, addr1, addr2, email, mobile, reg_date, instaId) values ('$u_name', '$u_id', '$pwd', '$birth', '$postalCode', '$addr1', '$addr2', '$email', '$mobile', '$reg_date', '$instaId');";
 // $sql = "insert into members(u_name, u_id, pwd, birth, postalCode, addr1, addr2, email, mobile, reg_date) values ('".$u_name."', '".$u_id."', '".$pwd."', '".$birth."', '".$postalCode."', '".$addr1."', '".$addr2."', '".$email."', '".$mobile."', '".$reg_date."');";
 
 echo $sql;

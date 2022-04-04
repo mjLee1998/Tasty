@@ -40,11 +40,6 @@ include "inc/admin_session.php"
         </div>
         <div class="menu">
         <ul>
-            <?php
-					if(!$s_id){?>
-            <li class="login"><a href="../login/login.php">로그인</a></li>
-            <li class="join"><a href="../members/join.php">회원가입</a></li>
-            <?php } else { ?>
             <p id="hello">
               <?php echo $s_name; ?>님 &nbsp어서오세요
               <li class="logout"><a href="../login/logout.php">로그아웃</a></li>
@@ -53,7 +48,6 @@ include "inc/admin_session.php"
               <?php if($s_id == "admin"){ ?>
               <!-- <li class="admin"><a href="admin/admin.php">관리자</a></li> -->
               <?php }; ?>
-              <?php }; ?>
               <li class="intro"><a href="../intro.php">소개</a></li>
             </p>
           </ul>
@@ -61,13 +55,10 @@ include "inc/admin_session.php"
       </div>
     </header>
 		<main>
-			<h4>*관리자* </h4>
-			<p>관리자 페이지입니다.</p>
+			<h4>관리자</h4>
 			<p>
-				<a href="../index.php">홈으로</a><br>
-				<a href="members/list.php">멤버 관리</a><br>
-				<a href="..//list.php">식당 관리</a><br>
-				<a href="../login/logout.php">로그아웃</a>
+				<a href="members/memberList.php">멤버 관리</a>
+				<a href="restaurantsList.php">식당 관리</a>
 			</p>
 		</main>
 	</body>

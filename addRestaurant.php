@@ -4,7 +4,8 @@ session_start();
 
 $s_id = isset($_SESSION["s_id"])? $_SESSION["s_id"]:"";
 $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
-// echo "session ID : ".$s_id."/ name : ".$s_name;
+$instaId = isset($_SESSION["instaId"])? $_SESSION["instaId"]:"";
+echo $instaId;
 
 
 

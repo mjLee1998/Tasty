@@ -23,11 +23,9 @@ $page = isset($_GET["page"])? $_GET["page"] : 1;
 
 //전체 페이지 수 = 전체 데이터 / 페이지 당 데이터 개수, ceil : 올림값, floor : 내림값, round : 반올림
 $total_page = ceil($num / $list_num);
-echo "전체 페이지 수 : ".$total_page;
 
 // paging : 전체 블럭 수 = 전체 페이지 수 / 블럭 당 페이지 수
 $total_block = ceil($total_page / $page_num);
-echo "전체 블럭 수 : ".$total_block;
 
 // paging : 현재 블럭 번호 = ceil(헌재 페이지 / 블러당 페이지)
 $now_block = ceil($page / $page_num);
@@ -57,11 +55,7 @@ if($e_pageNum > $total_page){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 목록</title>
-    <style>
-        body,input,select,option,button{font-size:16px}
-        input[type=checkbox]{width:24px;height:24px}
-        span{font-size: 14px; color: red;}
-    </style>
+		<link rel="stylesheet" href="../../style/memberList.css">
     <script type="text/javascript">
 			function del_check(idx){
             var i = confirm("정말 삭제하시겠습니까? 삭제한 아이디는 사용하실 수 없습니다.");
@@ -72,13 +66,29 @@ if($e_pageNum > $total_page){
     </script>
 </head>
 <body>
-<h2>*관리자*</h2>
-	<p>관리자 문서입니다.</p>
-	<p>"<?php echo $s_name; ?>"님, 안녕하세요.</p>
+<header>
+      <div class="header">
+        <div class="logo">
+          <h1 class="tasty"><a href="../../index.php" style="color:#38a69b; margin-bottom:10px;">Tasty</a></h1>
+        </div>
+        <div class="menu">
+        <ul>
+            <p id="hello">
+              <?php echo $s_name; ?>님 &nbsp어서오세요
+              <li class="logout"><a href="../../login/logout.php">로그아웃</a></li>
+              <li class="members"><a href="../../members/members.php">멤버</a></li>
+              <!-- <li><a href="members/edit.php">정보수정</a></li> -->
+              <?php if($s_id == "admin"){ ?>
+              <li class="admin"><a href="../admin.php">관리자</a></li>
+              <?php }; ?>
+              <li class="intro"><a href="../../intro.php">소개</a></li>
+            </p>
+          </ul>
+        </div>
+      </div>
+    </header>
+<h2>멤버 관리</h2>
 	<p>
-		<a href="/website/admin/admin.php">홈으로</a>
-		<a href="../admin.php">이전으로</a>
-		<a href="../login/logout.php">로그아웃</a>
 	</p>
 	<hr>
 	<p>총 <?php echo $num; ?>명</p>
@@ -92,6 +102,7 @@ if($e_pageNum > $total_page){
 			<td>이메일</td>
 			<td>전화번호</td>
 			<td>가입일</td>
+			<td>instaId</td>
 			<td>수정</td>
 			<td>삭제</td>
 		</tr>
@@ -124,7 +135,8 @@ if($e_pageNum > $total_page){
 			<td><?php echo $array["email"]; ?></td>
 			<td><?php echo $array["mobile"]; ?></td>
 			<td><?php echo $array["reg_date"]; ?></td>
-			<td><a href="edit.php?u_idx=<?php echo $array["idx"]; ?>">수정</a></td>
+			<td><?php echo $array["instaId"]; ?></td>
+			<td><a href="memberEdit.php?u_idx=<?php echo $array["idx"]; ?>">수정</a></td>
 			<td><a href="#" onclick="del_check(<?php echo $array["idx"]; ?>)">삭제</a></td>
 		</tr>
 		<?php 
@@ -139,7 +151,7 @@ if($e_pageNum > $total_page){
 		if($page <= 1){ ?>
 			<!-- <a href="list.php?page=<?php echo $page = 1; ?>">이전</a> -->
 		<?php } else { ?>
-			<a href="list.php?page=<?php echo ($page-1); ?>">이전</a>
+			<a href="memberList.php?page=<?php echo ($page-1); ?>">이전</a>
 		<?php
 		};
 		?>
@@ -151,7 +163,7 @@ if($e_pageNum > $total_page){
 		<?php
 		// pager: 페이지 번호
 		for($print_page = $s_pageNum; $print_page <= $e_pageNum; $print_page++){ ?>
-		<a href="list.php?page=<?php echo $print_page;?>"><?php echo $print_page; ?></a>
+		<a href="memberList.php?page=<?php echo $print_page;?>"><?php echo $print_page; ?></a>
 		<?php
 		};
 		?>
@@ -160,7 +172,7 @@ if($e_pageNum > $total_page){
 	if($page >= $total_page){ ?>
 			<!-- <a href="list.php?page=<?php echo $total_page; ?>">다음</a> -->
 		<?php } else { ?>
-			<a href="list.php?page=<?php echo ($page+1); ?>">다음</a>
+			<a href="memberList.php?page=<?php echo ($page+1); ?>">다음</a>
 		<?php
 		};
 		?>

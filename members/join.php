@@ -38,7 +38,7 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../style/join.css" />
+    <link rel="stylesheet" href="../style/join.css?after" />
     <script type="text/javascript">
       function form_check() {
         var u_name = document.getElementById("u_name");
@@ -131,7 +131,7 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
       }
     </script>
   </head>
-  <body>
+  <body style="overflow-x:hidden; overflow-y:auto;"> 
     <header>
       <div class="header">
         <div class="logo">
@@ -160,15 +160,15 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
         <legend>회원가입</legend>
         <p>
           <label for="u_name">이름</label>
-          <input type="text" name="u_name" id="u_name" />
+          <input type="text" name="u_name" id="u_name" style="margin-left:30px; width:210px;"/>
           <br />
           <span class="err_name"></span>
         </p>
 
         <p>
           <label for="u_id">아이디</label>
-          <input type="text" name="u_id" id="u_id" placeholder="중복확인을 눌러주세요" readonly />
-          <button type="button" onclick="id_search()">아이디 중복확인</button>
+          <input type="text" name="u_id" id="u_id" placeholder="중복확인을 눌러주세요" readonly style="margin-left:17px; width:210px;"/>
+          <button type="button" onclick="id_search()" style="margin-left:5px; width:80px; font-size:14px" class="btn btn-outline-secondary">중복확인</button>
           <br />
           <span class="err_uid"></span>
         </p>
@@ -176,30 +176,30 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
         <p>
           <label for="pwd">비밀번호</label>
           <!-- <input type="password" name="pwd" id="pwd"> -->
-          <input type="password" name="pwd" id="pwd" />
+          <input type="password" name="pwd" id="pwd" style="margin-left:5px; width:210px;"/>
           <br />
           <span class="err_pwd"></span>
         </p>
 
         <p>
-          <label for="repwd">비밀번호 확인</label>
+          <label for="repwd">재확인</label>
           <!-- <input type="password" name="repwd" id="repwd"> -->
-          <input type="password" name="repwd" id="repwd" />
+          <input type="password" name="repwd" id="repwd" style="margin-left:15px; width:210px;"/>
           <br />
           <span class="err_pwd"></span>
         </p>
 
         <p>
           <label for="mobile">전화번호</label>
-          <input type="text" name="mobile" id="mobile" />
+          <input type="text" name="mobile" id="mobile" placeholder="'-' 없이 숫자만 입력" style="margin-left:2px; width:210px"/>
           <br />
-          <span class="err_mobile">"-" 없이 숫자만 입력</span>
+          <span class="err_mobile"></span>
         </p>
         
         <p>
           <label for="email">이메일</label>
-          <input type="text" name="email_id" id="email_id" style="width:80px; margin-left:13px;"/> @
-          <input type="text" name="email_dns" id="email_dns" style="width:80px;"/>
+          <input type="text" name="email_id" id="email_id" style="width:95px; margin-left:13px;"/> @
+          <input type="text" name="email_dns" id="email_dns" style="width:95px;"/>
           <select name="email_sel" id="email_sel" onchange="change_email()"class="form-select" aria-label="Default select example">
             <option value="">직접 입력</option>
             <option value="naver.com">NAVER</option>
@@ -210,9 +210,14 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
         
         <p>
           <label for="birth">생년월일</label>
-          <input type="text" name="birth" id="birth" />
+          <input type="text" name="birth" id="birth" placeholder="ex)19981123" style="width:210px"/>
           <br />
-          <span>* 8자리 숫자로 입력 ex) 20211022</span>
+        </p>
+
+        <p>
+          <label for="instaId">인스타ID</label>
+          <input type="text" name="instaId" id="instaId" placeholder="ex)@instaId" style="width:207px"/>
+          <br />
         </p>
         
         <label for="postcode"></label>
@@ -228,7 +233,7 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
         <label for="detailAddress"></label>
         <input style="width:150px; " type="text" name="detailAddress" id="detailAddress" placeholder="상세주소(필수)" />
         <label for="extraAddress"></label>
-        <input style="width:150px;" type="text" name="extraAddress" id="extraAddress" placeholder="참고항목(자동 기입)" readonly/>
+        <input style="width:140px;" type="text" name="extraAddress" id="extraAddress" placeholder="참고항목(자동 기입)" readonly/>
       </p>
         <div
     id="layer"
@@ -263,9 +268,8 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
         </p>
 
         <p class="buttons">
-          <button type="submit">회원가입</button>
-          <button onclick="history.back()">이전으로</button>
-          <button type="button" onclick="location.href='../index.php'">
+          <button type="submit" class="btn btn-outline-secondary">회원가입</button>
+          <button type="button" onclick="location.href='../index.php'" class="btn btn-outline-secondary">
             홈으로
           </button>
         </p>

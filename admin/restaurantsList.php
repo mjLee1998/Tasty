@@ -1,12 +1,9 @@
 <?php
 
-include "../inc/dbcon.php";
-session_start();
+include "inc/admin_session.php";
+include "inc/dbcon.php";
 
-$s_id = isset($_SESSION["s_id"])? $_SESSION["s_id"]:"";
-$s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
-
-$sql = "select * from members;";
+$sql = "select * from restaurants;";
 $result = mysqli_query($dbcon,$sql);
 
 // $array = mysqli_fetch_array($result);
@@ -16,10 +13,10 @@ $num = mysqli_num_rows($result);
 // echo $num;
 
 // paging: 한 페이지 당 데이터 개수
-$list_num = 10;
+$list_num = 5;
 
 // 한 블럭 당 페이지 수
-$page_num = 5;
+$page_num = 3;
 
 // 현재 페이지
 $page = isset($_GET["page"])? $_GET["page"] : 1;
@@ -58,7 +55,7 @@ if($e_pageNum > $total_page){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 목록</title>
-		<link rel="stylesheet" href="../../style/memberList.css">
+		<link rel="stylesheet" href="../../style/restaurantsList.css">
     <script type="text/javascript">
 			function del_check(idx){
             var i = confirm("정말 삭제하시겠습니까? 삭제한 아이디는 사용하실 수 없습니다.");
@@ -72,35 +69,40 @@ if($e_pageNum > $total_page){
 <header>
       <div class="header">
         <div class="logo">
-          <h1 class="tasty"><a href="../../index.php" style="color:#38a69b; margin-bottom:10px;">Tasty</a></h1>
+          <h1 class="tasty"><a href="../index.php" style="color:#38a69b; margin-bottom:10px;">Tasty</a></h1>
         </div>
         <div class="menu">
         <ul>
             <p id="hello">
               <?php echo $s_name; ?>님 &nbsp어서오세요
-              <li class="logout"><a href="../../login/logout.php">로그아웃</a></li>
-              <li class="members"><a href="../../members/members.php">멤버</a></li>
+              <li class="logout"><a href="../login/logout.php">로그아웃</a></li>
+              <li class="members"><a href="../members/members.php">멤버</a></li>
+              <!-- <li><a href="members/edit.php">정보수정</a></li> -->
               <?php if($s_id == "admin"){ ?>
-              <li class="admin"><a href="../admin.php">관리자</a></li>
+              <li class="admin"><a href="admin.php">관리자</a></li>
               <?php }; ?>
-              <li class="intro"><a href="../../intro.php">소개</a></li>
+              <li class="intro"><a href="../intro.php">소개</a></li>
             </p>
           </ul>
         </div>
       </div>
     </header>
-<h2>멤버 관리</h2>
+<h2>식당 관리</h2>
 	<p>
 	</p>
 	<hr>
-	<p>총 <?php echo $num; ?>명</p>
+	<p>총 <?php echo $num; ?>개</p>
 	<table border = "1">
 		<tr>
 			<td>번호</td>
-			<td>이름</td>
-			<td>이메일</td>
+			<td>식당 이름</td>
+			<td>카테고리</td>
 			<td>instaId</td>
-			<td>가입일</td>
+			<td>주소</td>
+			<td>한줄평</td>
+			<td>위치</td>
+			<td>수정</td>
+			<td>삭제</td>
 		</tr>
 		<?php
 		// $i = 1;
@@ -109,7 +111,7 @@ if($e_pageNum > $total_page){
 		$start = ($page-1) * $list_num;
 
 		// paging : 쿼리 작성
-		$sql = "select * from members limit $start, $list_num";
+		$sql = "select * from restaurants limit $start, $list_num";
 
 		// paging: 쿼리 전송
 		$result = mysqli_query($dbcon, $sql);
@@ -124,10 +126,14 @@ if($e_pageNum > $total_page){
 
 		<tr>
 			<td><?php echo $cnt; ?></td>
-			<td><?php echo $array["u_name"]; ?></td>
-			<td><?php echo $array["email"]; ?></td>
+			<td><?php echo $array["restaurantName"]; ?></td>
+			<td><?php echo $array["categori"]; ?></td>
 			<td><?php echo $array["instaId"]; ?></td>
-			<td><?php echo $array["reg_date"]; ?></td>
+			<td><?php echo $array["addr1"]." ".$array["addr2"]; ?></td>
+			<td><?php echo $array["review"]; ?></td>
+			<td><?php echo $array["location"]; ?></td>
+			<td><a href="edit.php?u_idx=<?php echo $array["idx"]; ?>">수정</a></td>
+			<td><a href="#" onclick="del_check(<?php echo $array["idx"]; ?>)">삭제</a></td>
 		</tr>
 		<?php 
 			$cnt++;
@@ -141,7 +147,7 @@ if($e_pageNum > $total_page){
 		if($page <= 1){ ?>
 			<!-- <a href="list.php?page=<?php echo $page = 1; ?>">이전</a> -->
 		<?php } else { ?>
-			<a href="members.php?page=<?php echo ($page-1); ?>">이전</a>
+			<a href="restaurantsList.php?page=<?php echo ($page-1); ?>">이전</a>
 		<?php
 		};
 		?>
@@ -153,7 +159,7 @@ if($e_pageNum > $total_page){
 		<?php
 		// pager: 페이지 번호
 		for($print_page = $s_pageNum; $print_page <= $e_pageNum; $print_page++){ ?>
-		<a href="members.php?page=<?php echo $print_page;?>"><?php echo $print_page; ?></a>
+		<a href="restaurantsList.php?page=<?php echo $print_page;?>"><?php echo $print_page; ?></a>
 		<?php
 		};
 		?>
@@ -162,7 +168,7 @@ if($e_pageNum > $total_page){
 	if($page >= $total_page){ ?>
 			<!-- <a href="list.php?page=<?php echo $total_page; ?>">다음</a> -->
 		<?php } else { ?>
-			<a href="members.php?page=<?php echo ($page+1); ?>">다음</a>
+			<a href="restaurantsList.php?page=<?php echo ($page+1); ?>">다음</a>
 		<?php
 		};
 		?>
