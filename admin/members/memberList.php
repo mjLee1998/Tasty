@@ -137,7 +137,7 @@ if($e_pageNum > $total_page){
 			<td><?php echo $array["reg_date"]; ?></td>
 			<td><?php echo $array["instaId"]; ?></td>
 			<td><a href="memberEdit.php?u_idx=<?php echo $array["idx"]; ?>">수정</a></td>
-			<td><a href="#" onclick="del_check(<?php echo $array["idx"]; ?>)">삭제</a></td>
+			<td><a href="#" onclick="del_check(<?php echo $array['idx']; ?>)">삭제</a></td>
 		</tr>
 		<?php 
 			$cnt++;

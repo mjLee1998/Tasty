@@ -2,11 +2,11 @@
 
 include "inc/admin_session.php";
 
-$u_idx = $_GET["u_idx"];
+$idx = $_GET["idx"];
 
 include "../inc/dbcon.php";
 
-$sql = "select * from members where idx=$u_idx;";
+$sql = "select * from restaurants where idx=$idx;";
 $result = mysqli_query($dbcon,$sql);
 
 $array = mysqli_fetch_array($result);
@@ -31,38 +31,29 @@ $array = mysqli_fetch_array($result);
     />
     <link rel="stylesheet" href="../style/restaurantEdit.css?after">
     <script type="text/javascript">
-        function edit_check (){
-            var pwd = document.getElementById("pwd");
-            var repwd = document.getElementById("repwd");
-
-            if(pwd.value && pwd.value.length < 4 || pwd.value.length > 8){
-                alert("비밀번호는 4~8글자만 입력할 수 있습니다.");
-                pwd.focus();
-                return false;
-                };
-            if(pwd.value != repwd.value){
-                alert("비밀번호를 확인해주세요.");
-                pwd.focus();
-                return false;
+			function edit_check(){
+				var restaurantName = document.querySelector("#restaurantName");
+				var instaId = document.querySelector("#instaId");
+				if(restaurantName.value == ""){
+					alert("식당 이름을 입력해주세요.")
+					restaurantName.focus();
+					return false;
+				};
+				if(instaId.value == ""){
+					alert("Instagram ID를 입력해주세요.")
+					instaId.focus();
+					return false;
+				}
+			}
+        function del_check(){
+            var i = confirm("정말 삭제하시겠습니까? 삭제한 식당은 지도에 나타나지 않습니다.");
+            if(i == true){
+                location.href = "restaurantDelete.php?idx=<?php echo $idx; ?>"
             };
         };
-        function change_email(){
-            var email_dns = document.getElementById("email_dns");
-            var email_sel = document.getElementById("email_sel");
-            var idx = email_sel.options.selectedIndex;
-            var sel_value = email_sel.options[idx].value;
-            email_dns.value = sel_value;
-        };
-        function del_check(){
-            var i = confirm("정말 삭제하시겠습니까? 삭제한 아이디는 사용하실 수 없습니다.");
-            if(i == true){
-                location.href = "delete.php?u_idx=<?php echo $u_idx; ?>"
-            }; 
-        };
     </script>
-    
 </head>
-<body>
+<body style="overflow-x:hidden; overflow-y:auto;">
 <header>
     <div class="header">
         <div class="logo">
@@ -70,109 +61,56 @@ $array = mysqli_fetch_array($result);
         </div>
         <div class="menu">
         <ul>
-            <?php
-					if(!$s_id){?>
-            <li class="login"><a href="./login/login.php">로그인</a></li>
-            <li class="join"><a href="./members/join.php">회원가입</a></li>
-            <?php } else { ?>
             <p id="hello">
             <?php echo $s_name; ?>님 &nbsp어서오세요
-            <li class="logout"><a href="login/logout.php">로그아웃</a></li>
-            <li class="members"><a href="members/members.php">멤버</a></li>
+            <li class="logout"><a href="../login/logout.php">로그아웃</a></li>
+            <li class="members"><a href="../members/members.php">멤버</a></li>
             <?php if($s_id == "admin"){ ?>
-            <li class="admin"><a href="admin/admin.php">관리자</a></li>
+            <li class="admin"><a href="admin.php">관리자</a></li>
             <?php }; ?>
-            <?php }; ?>
-            <li class="intro"><a href="intro.php">소개</a></li>
+            <li class="intro"><a href="../intro.php">소개</a></li>
             </p>
         </ul>
         </div>
     </div>
-    </header>
-    <form name="edit_form" action="memberEdit_check.php" method="post" onsubmit="return edit_check()">
+	</header>
+	<form name="edit_form" action="restaurantEditCheck.php" method="post" onsubmit="return edit_check()">
         <fieldset>
-            <legend>회원정보 수정</legend>
-            <input type="hidden" name="u_idx" value="<?php echo $u_idx;?>" class="form-check">
-            <p>
-                <span class="txt">이름</span>
-                <?php echo $array["u_name"]?>
-            </p>
+					<legend>식당 정보 수정</legend>
+					<input type="hidden" name="idx" value="<?php echo $idx;?>" class="form-check">
+					<p>
+						<label for="restaurantName">식당 이름</label>
+						<input type="text" name="restaurantName" id="restaurantName" value="<?php echo $array["restaurantName"]?>">
+						<span class="err_restaurantName"></span>
+					</p>
 
             <p>
-                <span class="txt">아이디</span>
-                <?php echo $array["u_id"]; ?>
+                <span class="txt">카테고리</span>
+								<select name="categori" id="categori" class="form-select" aria-label="Default select example">
+        <div class="options">
+            <option value="한식">한식</option>
+            <option value="중식">중식</option>
+            <option value="일식">일식</option>
+            <option value="양식">양식</option>
+            <option value="분식">분식</option>
+            <option value="스시">스시</option>
+            <option value="회">회</option>
+        </div>
+        </select>
             </p>
 
             <p style="margin-top:10px;">
-                <label for="pwd">비밀번호</label>
-                <!-- <input type="password" name="pwd" id="pwd"> -->
-                <input type="password" name="pwd" id="pwd">
+                <label for="instaId">Instagram ID</label>
+                <input type="text" name="instaId" id="instaId" value="<?php echo $array['instaId'] ?>"
                 <br>
-                <span style="color:#38a69b">비워둘 경우 비밀번호가 변경되지 않음</span>
-                <br>
-                <span class="err_pwd"></span>
-            </p>
-            
-            <p style="margin-top:-10px;">
-                <label for="repwd">비밀번호 확인</label>
-                <!-- <input type="password" name="repwd" id="repwd"> -->
-                <input type="password" name="repwd" id="repwd">
-                <br>
-                <span class="err_pwd"></span>
-            </p>
-
-            <p style="margin-top:-10px;">
-                <label for="mobile">전화번호</label>
-                <input type="text" name="mobile" id="mobile" value="<?php echo $array["mobile"]?>">
-                <br>
-                <span class="err_mobile" style="color:#38a69b">"-" 없이 숫자만 입력</span>
-            </p>
-
-            
-            <?php
-            
-            $birth = str_replace("-", "", $array["birth"]);
-            
-            ?>
-            <p>
-                <label for="birth">생년월일</label>
-                <input type="text" name="birth" id="birth" value="<?php echo $birth; ?>">
-                <br>
-                <span style="color:#38a69b">* 8자리 숫자로 입력 ex) 20211022</span>
-            </p>
-
-            <?php
-
-            $email = explode("@", $array["email"]);
-
-            ?>
-
-            <p>
-                <label for="email">이메일</label><br>
-                <input type="text" name="email_id" id="email_id" value="<?php echo $email[0]?>"> @ 
-                <input type="text" name="email_dns" id="email_dns" value="<?php echo $email[1]?>"> 
-                <select name="email_sel" id="email_sel" onchange="change_email()" class="form-select">
-                    <option value="">직접 입력</option>
-                    <option value="naver.com">NAVER</option>
-                    <option value="hanmail.net">DAUM</option>
-                    <option value="gmail.com">GOOGLE</option>
-                </select>
-            </p>
-						
-            <!-- <p>
-                <label for="address">주소</label>
-                <button type="button" onclick="adress_search()">주소검색</button>
-                <br>
-                우편번호 <input type="text" name="postalCode" id="postalCode" size="7" value="<?php echo $array["postalCode"];?>">
-                <br>
-                기본주소 <input type="text" name="addr1" id="addr1" size="30" value="<?php echo $array["addr1"];?>">
-                <br>
-                상세주소 <input type="text" name="addr2" id="addr2" size="30" value="<?php echo $array["addr2"];?>">
-            </p> -->
+                <span class="err_instaId"></span>
+							</p>
+							<span style="color:#38a69b; width:200px;">우편번호가 비어있더라도 정보 수정은 가능합니다.<br> &nbsp&nbsp 주소를 바꾸실 경우에만 우편번호 찾기를 눌러주세요.</span>
+							
             <div class="search">
                 <div class="input-group mb-3">
                     <label for="address"></label>
-                    <input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly class="form-control" aria-label="우편번호" aria-describedby="basic-addon2" value="<?php echo $array["postalCode"];?>"/>
+                    <input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly class="form-control" aria-label="우편번호" aria-describedby="basic-addon2" />
                     <div class="input-group-append"></div>
                     <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="btn btn-outline-secondary"/>
                 </div>
@@ -317,8 +255,8 @@ function closeDaumPostcode() {
             <p>
                 <button type="button" onclick="history.back()" class="btn">이전으로</button>
                 <button type="submit" class="btn">정보 수정</button>
-                <button type="button" onclick="location.href='../admin.php'" class="btn">홈으로</button>
-                <button type="button" onclick="del_check()" class="btn">회원 삭제</button>
+                <button type="button" onclick="location.href='../index.php'" class="btn">홈으로</button>
+                <button type="button" onclick="del_check()" class="btn">식당 삭제</button>
             </p>
 
         </fieldset>

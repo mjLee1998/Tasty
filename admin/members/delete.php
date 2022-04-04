@@ -14,7 +14,7 @@ mysqli_close($dbcon);
 echo "
 <script type =\"text/javascript\">
 alert(\"정상처리 되었습니다.\");
-location.href = \"list.php\";
+location.href = \"memberList.php\";
 </script>
 "
 ?>

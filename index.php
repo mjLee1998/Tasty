@@ -85,10 +85,10 @@ $row = mysqli_fetch_assoc($result);
                 </a>
               </div>
             </div>
-            <div class="mainMenu3">
+            <!-- <div class="mainMenu3">
               <div class="selectMember">
                 멤버별로 보기
-              </div>
+              </div> -->
           <?php } ?>
         </div>
       </div>
@@ -198,7 +198,6 @@ for(i = 0; i < positions.length; i++){
 };
   markers.push(marker);
 }
-console.log(markers);
 
 
         var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
@@ -292,7 +291,6 @@ console.log(markers);
         }
           }
         }
-        console.log(markers);
       </script>
     </main>
 

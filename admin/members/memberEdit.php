@@ -70,20 +70,14 @@ $array = mysqli_fetch_array($result);
         </div>
         <div class="menu">
         <ul>
-            <?php
-					if(!$s_id){?>
-            <li class="login"><a href="./login/login.php">로그인</a></li>
-            <li class="join"><a href="./members/join.php">회원가입</a></li>
-            <?php } else { ?>
             <p id="hello">
             <?php echo $s_name; ?>님 &nbsp어서오세요
-            <li class="logout"><a href="login/logout.php">로그아웃</a></li>
-            <li class="members"><a href="members/members.php">멤버</a></li>
+            <li class="logout"><a href="../../login/logout.php">로그아웃</a></li>
+            <li class="members"><a href="../../members/members.php">멤버</a></li>
             <?php if($s_id == "admin"){ ?>
-            <li class="admin"><a href="admin/admin.php">관리자</a></li>
+            <li class="admin"><a href="../admin.php">관리자</a></li>
             <?php }; ?>
-            <?php }; ?>
-            <li class="intro"><a href="intro.php">소개</a></li>
+            <li class="intro"><a href="../../intro.php">소개</a></li>
             </p>
         </ul>
         </div>

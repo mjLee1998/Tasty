@@ -58,9 +58,9 @@ if($e_pageNum > $total_page){
 		<link rel="stylesheet" href="../style/restaurantsList.css">
     <script type="text/javascript">
 			function del_check(idx){
-            var i = confirm("정말 삭제하시겠습니까? 삭제한 아이디는 사용하실 수 없습니다.");
+            var i = confirm("정말 삭제하시겠습니까? 삭제한 식당은 지도에 나타나지 않습니다.");
             if(i == true){
-              location.href = "delete.php?u_idx="+idx;
+              location.href = "restaurantDelete.php?idx="+idx;
             }; 
         };
     </script>
@@ -130,8 +130,8 @@ if($e_pageNum > $total_page){
 			<td><?php echo $array["instaId"]; ?></td>
 			<td><?php echo $array["addr1"]." ".$array["addr2"]; ?></td>
 			<td><?php echo $array["review"]; ?></td>
-			<td><a href="restaurantEdit.php?u_idx=<?php echo $array["idx"]; ?>">수정</a></td>
-			<td><a href="#" onclick="del_check(<?php echo $array["idx"]; ?>)">삭제</a></td>
+			<td><a href="restaurantEdit.php?idx=<?php echo $array["idx"]; ?>">수정</a></td>
+			<td><a href="#" onclick="del_check(<?php echo $array['idx']; ?>)">삭제</a></td>
 		</tr>
 		<?php 
 			$cnt++;

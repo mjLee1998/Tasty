@@ -10,7 +10,7 @@ if(!$s_id || $s_id != "admin") {
 echo "
 <script type=\"text/javascript\">
 	alert(\"관리자 로그인이 필요합니다.\");
-	location.href=\"/index.php\"
+	location.href=\"https://localhost/tasty/index.php\"
 </script>
 ";
 }
