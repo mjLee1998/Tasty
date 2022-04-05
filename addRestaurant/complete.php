@@ -2,8 +2,9 @@
 
 session_start();
 
-$s_id = isset($_SESSION["s_id"])? $_SESSION["s_id"]:"";
-$s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
+$s_id = isset($_SESSION['s_id']) ? $_SESSION['s_id'] : '';
+$s_name = isset($_SESSION['s_name']) ? $_SESSION['s_name'] : '';
+
 // echo "session ID : ".$s_id."/ name : ".$s_name;
 ?>
 
@@ -22,7 +23,7 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-	<link rel="stylesheet" href="style/default.css">
+	<link rel="stylesheet" href="style/complete.css">
 </head>
 <body>
 <header>
@@ -32,8 +33,7 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
         </div>
         <div class="menu">
         <ul>
-            <?php
-					if(!$s_id){?>
+            <?php if (!$s_id) { ?>
             <li class="login"><a href="./login/login.php">로그인</a></li>
             <li class="join"><a href="./members/join.php">회원가입</a></li>
             <?php } else { ?>
@@ -42,21 +42,17 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
               <li class="logout"><a href="login/logout.php">로그아웃</a></li>
               <li class="members"><a href="members/members.php">멤버</a></li>
               <!-- <li><a href="members/edit.php">정보수정</a></li> -->
-              <?php if($s_id == "admin"){ ?>
+              <?php if ($s_id == 'admin') { ?>
               <li class="admin"><a href="admin/admin.php">관리자</a></li>
-              <?php }; ?>
-              <?php }; ?>
+              <?php } ?>
+              <?php } ?>
               <li class="intro"><a href="intro.php">소개</a></li>
             </p>
           </ul>
         </div>
       </div>
     </header>
-    <main>
-
-    </main>
-    <footer>
-      
-    </footer>
+		<br><br><br>
+	<h4>식당 등록 완료</h4>
 </body>
 </html>
