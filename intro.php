@@ -62,7 +62,7 @@ $s_name = isset($_SESSION['s_name']) ? $_SESSION['s_name'] : '';
       <div class="creater">
         <h5 style="color:rgb(61, 63, 74)">제작자</h5>
         <h6 style="color:rgb(61, 63, 74)">
-          기획 : 이명진, 강유상<br>
+          기획 : 이명진<br>
           제작 : 이명진
         </h6>
       </div>
