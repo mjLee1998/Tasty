@@ -1,16 +1,15 @@
 <?php
 
-include "inc/admin_session.php";
+include 'inc/admin_session.php';
 
-$idx = $_GET["idx"];
+$idx = $_GET['idx'];
 
-include "../inc/dbcon.php";
+include '../inc/dbcon.php';
 
 $sql = "select * from restaurants where idx=$idx;";
-$result = mysqli_query($dbcon,$sql);
+$result = mysqli_query($dbcon, $sql);
 
 $array = mysqli_fetch_array($result);
-
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -65,9 +64,9 @@ $array = mysqli_fetch_array($result);
             <?php echo $s_name; ?>님 &nbsp어서오세요
             <li class="logout"><a href="../login/logout.php">로그아웃</a></li>
             <li class="members"><a href="../members/members.php">멤버</a></li>
-            <?php if($s_id == "admin"){ ?>
+            <?php if ($s_id == 'admin') { ?>
             <li class="admin"><a href="admin.php">관리자</a></li>
-            <?php }; ?>
+            <?php } ?>
             <li class="intro"><a href="../intro.php">소개</a></li>
             </p>
         </ul>
@@ -77,10 +76,12 @@ $array = mysqli_fetch_array($result);
 	<form name="edit_form" action="restaurantEditCheck.php" method="post" onsubmit="return edit_check()">
         <fieldset>
 					<legend>식당 정보 수정</legend>
-					<input type="hidden" name="idx" value="<?php echo $idx;?>" class="form-check">
+					<input type="hidden" name="idx" value="<?php echo $idx; ?>" class="form-check">
 					<p>
 						<label for="restaurantName">식당 이름</label>
-						<input type="text" name="restaurantName" id="restaurantName" value="<?php echo $array["restaurantName"]?>">
+						<input type="text" name="restaurantName" id="restaurantName" value="<?php echo $array[
+          'restaurantName'
+      ]; ?>">
 						<span class="err_restaurantName"></span>
 					</p>
 
@@ -101,7 +102,9 @@ $array = mysqli_fetch_array($result);
 
             <p style="margin-top:10px;">
                 <label for="instaId">Instagram ID</label>
-                <input type="text" name="instaId" id="instaId" value="<?php echo $array['instaId'] ?>"
+                <input type="text" name="instaId" id="instaId" value="<?php echo $array[
+                    'instaId'
+                ]; ?>"
                 <br>
                 <span class="err_instaId"></span>
 							</p>
@@ -117,9 +120,13 @@ $array = mysqli_fetch_array($result);
         </div>
 
         <label for="address"></label>
-        <input style="width:307px; margin-bottom:10px;" type="text" name="address" id="address" value="<?php echo $array["addr1"];?>" readonly/><br />
+        <input style="width:307px; margin-bottom:10px;" type="text" name="address" id="address" value="<?php echo $array[
+            'addr1'
+        ]; ?>" readonly/><br />
         <label for="detailAddress"></label>
-        <input style="width:150px; " type="text" name="detailAddress" id="detailAddress" value="<?php echo $array["addr2"];?>" />
+        <input style="width:150px; " type="text" name="detailAddress" id="detailAddress" value="<?php echo $array[
+            'addr2'
+        ]; ?>" />
         <label for="extraAddress"></label>
         <input style="width:150px;" type="text" name="extraAddress" id="extraAddress" placeholder="참고항목(자동 기입)" readonly/>
         </p>
@@ -129,7 +136,7 @@ $array = mysqli_fetch_array($result);
         display: none;
         position: fixed;
         overflow: hidden;
-        z-index: 1;
+        z-index: 3;
         -webkit-overflow-scrolling: touch;
         "
     >

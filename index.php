@@ -33,7 +33,6 @@ $row = mysqli_fetch_assoc($result);
     />
     <link rel="stylesheet" href="style/index.css?after">
     <script type="text/javascript"></script>
-    <script src="./jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <header class="header">
@@ -190,7 +189,6 @@ for(i = 0; i < positions.length; i++){
 };
   preMarkers.push(marker);
 }
-console.log(preMarkers);
 
 
         var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
@@ -214,7 +212,6 @@ console.log(preMarkers);
               markers.push(preMarkers[i]);
             }
           };
-          console.log(markers);
 
           const selectedCategori = document.querySelector("#selectCategori");
           const idx = selectedCategori.options.selectedIndex;

@@ -2,8 +2,9 @@
 
 session_start();
 
-$s_id = isset($_SESSION["s_id"])? $_SESSION["s_id"]:"";
-$s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
+$s_id = isset($_SESSION['s_id']) ? $_SESSION['s_id'] : '';
+$s_name = isset($_SESSION['s_name']) ? $_SESSION['s_name'] : '';
+
 // echo "session ID : ".$s_id."/ name : ".$s_name;
 ?>
 
@@ -32,8 +33,7 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
         </div>
         <div class="menu">
         <ul>
-            <?php
-					if(!$s_id){?>
+            <?php if (!$s_id) { ?>
             <li class="login"><a href="./login/login.php">로그인</a></li>
             <li class="join"><a href="./members/join.php">회원가입</a></li>
             <?php } else { ?>
@@ -42,10 +42,10 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
               <li class="logout"><a href="login/logout.php">로그아웃</a></li>
               <li class="members"><a href="members/members.php">멤버</a></li>
               <!-- <li><a href="members/edit.php">정보수정</a></li> -->
-              <?php if($s_id == "admin"){ ?>
+              <?php if ($s_id == 'admin') { ?>
               <li class="admin"><a href="admin/admin.php">관리자</a></li>
-              <?php }; ?>
-              <?php }; ?>
+              <?php } ?>
+              <?php } ?>
               <li class="intro"><a href="intro.php">소개</a></li>
             </p>
           </ul>
@@ -56,7 +56,7 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
       <div class="introduce" style="margin-bottom:50px;">
         <h5 style="color:rgb(61, 63, 74)">페이지 소개</h5>
         <h6 style="color:rgb(61, 63, 74)">
-          Tasty는 친구나 지인들과 맛집을 공유하는 사이트입니다. 메인 페이지로 이동하셔서 사용해보시고 회원가입하셔서 직접 식당을 등록해보세요.
+          Tasty는 친구나 지인들과 맛집을 <br>공유하는 사이트입니다.<br><br> 메인 페이지로 이동하셔서 사용해보시고<br> 회원가입하셔서 직접 식당을 등록해보세요.
         </h6>
       </div>
       <div class="creater">

@@ -1,16 +1,15 @@
 <?php
 
-include "../inc/admin_session.php";
+include '../inc/admin_session.php';
 
-$u_idx = $_GET["u_idx"];
+$u_idx = $_GET['u_idx'];
 
-include "../inc/dbcon.php";
+include '../inc/dbcon.php';
 
 $sql = "select * from members where idx=$u_idx;";
-$result = mysqli_query($dbcon,$sql);
+$result = mysqli_query($dbcon, $sql);
 
 $array = mysqli_fetch_array($result);
-
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -74,9 +73,9 @@ $array = mysqli_fetch_array($result);
             <?php echo $s_name; ?>님 &nbsp어서오세요
             <li class="logout"><a href="../../login/logout.php">로그아웃</a></li>
             <li class="members"><a href="../../members/members.php">멤버</a></li>
-            <?php if($s_id == "admin"){ ?>
+            <?php if ($s_id == 'admin') { ?>
             <li class="admin"><a href="../admin.php">관리자</a></li>
-            <?php }; ?>
+            <?php } ?>
             <li class="intro"><a href="../../intro.php">소개</a></li>
             </p>
         </ul>
@@ -86,15 +85,15 @@ $array = mysqli_fetch_array($result);
     <form name="edit_form" action="memberEdit_check.php" method="post" onsubmit="return edit_check()">
         <fieldset>
             <legend>회원정보 수정</legend>
-            <input type="hidden" name="u_idx" value="<?php echo $u_idx;?>" class="form-check">
+            <input type="hidden" name="u_idx" value="<?php echo $u_idx; ?>" class="form-check">
             <p>
                 <span class="txt">이름</span>
-                <?php echo $array["u_name"]?>
+                <?php echo $array['u_name']; ?>
             </p>
 
             <p>
                 <span class="txt">아이디</span>
-                <?php echo $array["u_id"]; ?>
+                <?php echo $array['u_id']; ?>
             </p>
 
             <p style="margin-top:10px;">
@@ -117,17 +116,15 @@ $array = mysqli_fetch_array($result);
 
             <p style="margin-top:-10px;">
                 <label for="mobile">전화번호</label>
-                <input type="text" name="mobile" id="mobile" value="<?php echo $array["mobile"]?>">
+                <input type="text" name="mobile" id="mobile" value="<?php echo $array[
+                    'mobile'
+                ]; ?>">
                 <br>
                 <span class="err_mobile" style="color:#38a69b">"-" 없이 숫자만 입력</span>
             </p>
 
             
-            <?php
-            
-            $birth = str_replace("-", "", $array["birth"]);
-            
-            ?>
+            <?php $birth = str_replace('-', '', $array['birth']); ?>
             <p>
                 <label for="birth">생년월일</label>
                 <input type="text" name="birth" id="birth" value="<?php echo $birth; ?>">
@@ -135,16 +132,12 @@ $array = mysqli_fetch_array($result);
                 <span style="color:#38a69b">* 8자리 숫자로 입력 ex) 20211022</span>
             </p>
 
-            <?php
-
-            $email = explode("@", $array["email"]);
-
-            ?>
+            <?php $email = explode('@', $array['email']); ?>
 
             <p>
                 <label for="email">이메일</label><br>
-                <input type="text" name="email_id" id="email_id" value="<?php echo $email[0]?>"> @ 
-                <input type="text" name="email_dns" id="email_dns" value="<?php echo $email[1]?>"> 
+                <input type="text" name="email_id" id="email_id" value="<?php echo $email[0]; ?>"> @ 
+                <input type="text" name="email_dns" id="email_dns" value="<?php echo $email[1]; ?>"> 
                 <select name="email_sel" id="email_sel" onchange="change_email()" class="form-select">
                     <option value="">직접 입력</option>
                     <option value="naver.com">NAVER</option>
@@ -157,25 +150,37 @@ $array = mysqli_fetch_array($result);
                 <label for="address">주소</label>
                 <button type="button" onclick="adress_search()">주소검색</button>
                 <br>
-                우편번호 <input type="text" name="postalCode" id="postalCode" size="7" value="<?php echo $array["postalCode"];?>">
+                우편번호 <input type="text" name="postalCode" id="postalCode" size="7" value="<?php echo $array[
+                    'postalCode'
+                ]; ?>">
                 <br>
-                기본주소 <input type="text" name="addr1" id="addr1" size="30" value="<?php echo $array["addr1"];?>">
+                기본주소 <input type="text" name="addr1" id="addr1" size="30" value="<?php echo $array[
+                    'addr1'
+                ]; ?>">
                 <br>
-                상세주소 <input type="text" name="addr2" id="addr2" size="30" value="<?php echo $array["addr2"];?>">
+                상세주소 <input type="text" name="addr2" id="addr2" size="30" value="<?php echo $array[
+                    'addr2'
+                ]; ?>">
             </p> -->
             <div class="search">
                 <div class="input-group mb-3">
                     <label for="address"></label>
-                    <input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly class="form-control" aria-label="우편번호" aria-describedby="basic-addon2" value="<?php echo $array["postalCode"];?>"/>
+                    <input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly class="form-control" aria-label="우편번호" aria-describedby="basic-addon2" value="<?php echo $array[
+                        'postalCode'
+                    ]; ?>"/>
                     <div class="input-group-append"></div>
                     <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="btn btn-outline-secondary"/>
                 </div>
         </div>
 
         <label for="address"></label>
-        <input style="width:307px; margin-bottom:10px;" type="text" name="address" id="address" value="<?php echo $array["addr1"];?>" readonly/><br />
+        <input style="width:307px; margin-bottom:10px;" type="text" name="address" id="address" value="<?php echo $array[
+            'addr1'
+        ]; ?>" readonly/><br />
         <label for="detailAddress"></label>
-        <input style="width:150px; " type="text" name="detailAddress" id="detailAddress" value="<?php echo $array["addr2"];?>" />
+        <input style="width:150px; " type="text" name="detailAddress" id="detailAddress" value="<?php echo $array[
+            'addr2'
+        ]; ?>" />
         <label for="extraAddress"></label>
         <input style="width:150px;" type="text" name="extraAddress" id="extraAddress" placeholder="참고항목(자동 기입)" readonly/>
         </p>
@@ -185,7 +190,7 @@ $array = mysqli_fetch_array($result);
         display: none;
         position: fixed;
         overflow: hidden;
-        z-index: 1;
+        z-index: 3;
         -webkit-overflow-scrolling: touch;
         "
     >

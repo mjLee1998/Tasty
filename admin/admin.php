@@ -1,7 +1,6 @@
 <?php
 
-include "inc/admin_session.php";
-?>
+include 'inc/admin_session.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,9 +30,9 @@ include "inc/admin_session.php";
               <li class="logout"><a href="../login/logout.php">로그아웃</a></li>
               <li class="members"><a href="../members/members.php">멤버</a></li>
               <!-- <li><a href="members/edit.php">정보수정</a></li> -->
-              <?php if($s_id == "admin"){ ?>
+              <?php if ($s_id == 'admin') { ?>
               <!-- <li class="admin"><a href="admin/admin.php">관리자</a></li> -->
-              <?php }; ?>
+              <?php } ?>
               <li class="intro"><a href="../intro.php">소개</a></li>
             </p>
           </ul>
