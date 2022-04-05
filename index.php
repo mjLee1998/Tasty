@@ -2,26 +2,21 @@
 
 session_start();
 
-$s_id = isset($_SESSION["s_id"])? $_SESSION["s_id"]:"";
-$s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
+$s_id = isset($_SESSION['s_id']) ? $_SESSION['s_id'] : '';
+$s_name = isset($_SESSION['s_name']) ? $_SESSION['s_name'] : '';
 // echo "session ID : ".$s_id."/ name : ".$s_name;
 
-
-
-include"./inc/dbcon.php";
-$sql = "select * from restaurants where idx= 1;";
+include './inc/dbcon.php';
+$sql = 'select * from restaurants where idx= 1;';
 // echo $sql;
 
 //DB에서 값 가져오기
-$result = mysqli_query($dbcon,$sql);
+$result = mysqli_query($dbcon, $sql);
 $row = mysqli_fetch_assoc($result);
 
 //table restaurant 변수
 
 // mysqli_close($dbcon);
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -47,8 +42,7 @@ $row = mysqli_fetch_assoc($result);
         </div>
         <div class="menu">
           <ul>
-            <?php
-					if(!$s_id){?>
+            <?php if (!$s_id) { ?>
             <li class="login"><a href="./login/login.php">로그인</a></li>
             <li class="join"><a href="./members/join.php">회원가입</a></li>
             <?php } else { ?>
@@ -57,10 +51,10 @@ $row = mysqli_fetch_assoc($result);
               <li class="logout"><a href="login/logout.php">로그아웃</a></li>
               <li class="members"><a href="members/members.php">멤버</a></li>
               <!-- <li><a href="members/edit.php">정보수정</a></li> -->
-              <?php if($s_id == "admin"){ ?>
+              <?php if ($s_id == 'admin') { ?>
               <li class="admin"><a href="admin/admin.php">관리자</a></li>
-              <?php }; ?>
-              <?php }; ?>
+              <?php } ?>
+              <?php } ?>
               <li class="intro"><a href="intro.php">소개</a></li>
             </p>
           </ul>
@@ -69,10 +63,9 @@ $row = mysqli_fetch_assoc($result);
 
     <main>
       <div class="main_header">
-        <?php
-        if(!$s_id){?>
+        <?php if (!$s_id) { ?>
           <p></p>
-          <?php } else{ ?>
+          <?php } else { ?>
             <div class="mainMenu1">
               <div class="addRestaurant">
                 <a href="addRestaurant.php">식당 추가</a>
@@ -154,20 +147,17 @@ $row = mysqli_fetch_assoc($result);
 
 //num_rows()의 수만큼 각 행의 정보를 가져와서 마커에 정보를 담기
   <?php
-    $query = "select R.* from restaurants R";
-    
-    $result = mysqli_query($dbcon,$query);
-    while($row = mysqli_fetch_assoc($result)){
+  $query = 'select R.* from restaurants R';
 
-      $test[] = $row; 
+  $result = mysqli_query($dbcon, $query);
+  while ($row = mysqli_fetch_assoc($result)) {
+      $test[] = $row;
       echo 'var positions = ' . json_encode($test) . ';';
-    };
-    
-
-?>
+  }
+  ?>
 
 
-var markers = [];
+var preMarkers = [];
 for(i = 0; i < positions.length; i++){
   var loc = positions[i].location;
   var [lat, lng] = loc.split(',');
@@ -198,8 +188,9 @@ for(i = 0; i < positions.length; i++){
   '    </ul>' +
   '</div>'
 };
-  markers.push(marker);
+  preMarkers.push(marker);
 }
+console.log(preMarkers);
 
 
         var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
@@ -213,6 +204,18 @@ for(i = 0; i < positions.length; i++){
         let createdMarker = [];
 
         function categorize(){
+          //식당이름에 검색어를 포함한 식당만 표시
+          //검색값 가져오기
+          var Name = document.querySelector(".form-control");
+          //markers 베열에서 해당 값을 포함하는 식당이름을 가진 마커만 고르기
+          var markers = [];
+          for(i = 0; i < preMarkers.length; i++){
+            if(preMarkers[i].title.includes(Name.value) == true){
+              markers.push(preMarkers[i]);
+            }
+          };
+          console.log(markers);
+
           const selectedCategori = document.querySelector("#selectCategori");
           const idx = selectedCategori.options.selectedIndex;
           const selectedValue = selectedCategori.options[idx].value;
