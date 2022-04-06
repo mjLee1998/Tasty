@@ -2,8 +2,9 @@
 
 session_start();
 
-$s_id = isset($_SESSION["s_id"])? $_SESSION["s_id"]:"";
-$s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
+$s_id = isset($_SESSION['s_id']) ? $_SESSION['s_id'] : '';
+$s_name = isset($_SESSION['s_name']) ? $_SESSION['s_name'] : '';
+
 // echo "session ID : ".$s_id."/ name : ".$s_name;
 ?>
 
@@ -22,7 +23,7 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-	<link rel="stylesheet" href="..//style/welcome.css">
+	<link rel="stylesheet" href="style/welcome.css">
 </head>
 <body>
 <header>
@@ -33,7 +34,6 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
         <div class="menu">
         <ul>
             <li class="login"><a href="../login/login.php">로그인</a></li>
-            <li class="join"><a href="../members/join.php">회원가입</a></li>
               <li class="intro"><a href="../intro.php">소개</a></li>
             </p>
           </ul>

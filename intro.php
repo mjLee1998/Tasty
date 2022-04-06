@@ -34,8 +34,8 @@ $s_name = isset($_SESSION['s_name']) ? $_SESSION['s_name'] : '';
         <div class="menu">
         <ul>
             <?php if (!$s_id) { ?>
-            <li class="login"><a href="./login/login.php">로그인</a></li>
-            <li class="join"><a href="./members/join.php">회원가입</a></li>
+            <li class="login"><a href="login/login.php">로그인</a></li>
+            <li class="join"><a href="members/join.php">회원가입</a></li>
             <?php } else { ?>
             <p id="hello">
               <?php echo $s_name; ?>님 &nbsp어서오세요

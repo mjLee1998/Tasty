@@ -29,7 +29,7 @@
 	</script>
 </head>
 <body>
-	<form action="result_id.php" name="seach_id_form" method="post" onsubmit="return check_id()">
+	<form action="resultId.php" name="seachId_form" method="post" onsubmit="return check_id()">
 		<fieldset>
 			<legend>아이디 입력</legend>
 			<p>

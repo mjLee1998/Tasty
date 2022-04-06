@@ -1,13 +1,13 @@
 <?php
 
-$u_id = $_POST["input_id"];
+$u_id = $_POST['input_id'];
 // echo $u_id;
 
-include"../inc/dbcon.php";
+include 'inc/dbcon.php';
 
 $sql = "select u_id from members where u_id='$u_id';";
 
-$result = mysqli_query($dbcon,$sql);
+$result = mysqli_query($dbcon, $sql);
 
 // mysqli_fetch_row
 // $row = mysqli_fetch_row($result);
@@ -17,10 +17,9 @@ $result = mysqli_query($dbcon,$sql);
 // $array = mysqli_fetch_array($result);
 // echo $array["u_name"];
 
-// mysqli_num_rows 
+// mysqli_num_rows
 // echo mysqli_num_rows($result);
 $num = mysqli_num_rows($result);
-
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -35,35 +34,33 @@ $num = mysqli_num_rows($result);
 		.able{color:blue;}
 		.disable{color:red;}
 	</style>
-	<?php if(!$num){ ?>
+	<?php if (!$num) { ?>
 	<script type="text/javascript">
 			function return_id(){
-				opener.document.getElementById("u_id").value = "<?php echo $u_id;?>";
+				opener.document.getElementById("u_id").value = "<?php echo $u_id; ?>";
 				window.close();
 			}
 	</script>
-	<?php	} ?>
+	<?php } ?>
 </head>
 <body>
 	<p>
-		입력하신 <span class="bld">"<?php echo $u_id;?>"</span> 은 사용할 수
-		<!-- <?php
-			if(!$num){
-				echo "<span class=\"able\">있는</span>";
-			} else {
-				echo "<span class=\"disable\">없는</span>";
-			}
-		?> 아이디입니다. -->
-		<?php if(!$num){ ?>
+		입력하신 <span class="bld">"<?php echo $u_id; ?>"</span> 은 사용할 수
+		<!-- <?php if (!$num) {
+      echo "<span class=\"able\">있는</span>";
+  } else {
+      echo "<span class=\"disable\">없는</span>";
+  } ?> 아이디입니다. -->
+		<?php if (!$num) { ?>
 			<span class="able">있는</span> 아이디입니다.
 			<br><br>
 			<a href="#" onclick="return_id()">[사용하기]</a>
-			<?php	} else { ?>
+			<?php } else { ?>
 				<span class="disable">없는</span> 아이디입니다.
 				<br><br>
-				<?php	} ?>
+				<?php } ?>
 		
-		<a href="search_id.php">[다시 검색]</a>
+		<a href="searchId.php">[다시 검색]</a>
 	</p>
 </body>
 </html>

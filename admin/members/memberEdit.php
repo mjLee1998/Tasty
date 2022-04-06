@@ -1,10 +1,10 @@
 <?php
 
-include '../inc/admin_session.php';
+include 'inc/adminSession.php';
 
 $u_idx = $_GET['u_idx'];
 
-include '../inc/dbcon.php';
+include 'inc/dbcon.php';
 
 $sql = "select * from members where idx=$u_idx;";
 $result = mysqli_query($dbcon, $sql);
@@ -28,7 +28,7 @@ $array = mysqli_fetch_array($result);
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
     crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../../style/memberEdit.css?after">
+    <link rel="stylesheet" href="style/memberEdit.css">
     <script type="text/javascript">
         function edit_check (){
             var pwd = document.getElementById("pwd");

@@ -1,10 +1,10 @@
 <?php
 
-include "inc/admin_session.php";
-include "inc/dbcon.php";
+include 'inc/adminSession.php';
+include 'inc/dbcon.php';
 
-$sql = "select * from restaurants;";
-$result = mysqli_query($dbcon,$sql);
+$sql = 'select * from restaurants;';
+$result = mysqli_query($dbcon, $sql);
 
 // $array = mysqli_fetch_array($result);
 
@@ -19,7 +19,7 @@ $list_num = 5;
 $page_num = 3;
 
 // 현재 페이지
-$page = isset($_GET["page"])? $_GET["page"] : 1;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
 
 //전체 페이지 수 = 전체 데이터 / 페이지 당 데이터 개수, ceil : 올림값, floor : 내림값, round : 반올림
 $total_page = ceil($num / $list_num);
@@ -33,20 +33,16 @@ $now_block = ceil($page / $page_num);
 // paging : 블럭 당 시작 페이지 번호 = (해당 글의 블럭 번호 - 1)* 블럭 당 페이지 수 + 1
 $s_pageNum = ($now_block - 1) * $page_num + 1;
 // 데이터가 0개인 경우
-if($s_pageNum <=0){
-	$s_pageNum = 1;
-};
-
+if ($s_pageNum <= 0) {
+    $s_pageNum = 1;
+}
 
 // paging : 블럭 당 마지막 페이지 번호 = 해당 글의 블럭 번호 * 블럭 당 페이지 수
 $e_pageNum = $now_block * $page_num;
 // 마지막 번호가 전체 페이지 수를 넘지 않도록
-if($e_pageNum > $total_page){
-	$e_pageNum = $total_page;
-};
-
-
-
+if ($e_pageNum > $total_page) {
+    $e_pageNum = $total_page;
+}
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -55,7 +51,7 @@ if($e_pageNum > $total_page){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 목록</title>
-		<link rel="stylesheet" href="../style/restaurantsList.css">
+		<link rel="stylesheet" href="style/restaurantsList.css">
     <script type="text/javascript">
 			function del_check(idx){
             var i = confirm("정말 삭제하시겠습니까? 삭제한 식당은 지도에 나타나지 않습니다.");
@@ -75,13 +71,11 @@ if($e_pageNum > $total_page){
         <ul>
             <p id="hello">
               <?php echo $s_name; ?>님 &nbsp어서오세요
-              <li class="logout"><a href="../login/logout.php">로그아웃</a></li>
-              <li class="members"><a href="../members/members.php">멤버</a></li>
-              <!-- <li><a href="members/edit.php">정보수정</a></li> -->
-              <?php if($s_id == "admin"){ ?>
-              <li class="admin"><a href="admin.php">관리자</a></li>
-              <?php }; ?>
-              <li class="intro"><a href="../intro.php">소개</a></li>
+              <li class="logout"><a href="../../login/logout.php">로그아웃</a></li>
+              <?php if ($s_id == 'admin') { ?>
+                <li class="members"><a href="../members/memberList.php">멤버관리</a></li>
+              <?php } ?>
+              <li class="intro"><a href="../../intro.php">소개</a></li>
             </p>
           </ul>
         </div>
@@ -104,72 +98,61 @@ if($e_pageNum > $total_page){
 			<td>삭제</td>
 		</tr>
 		<?php
-		// $i = 1;
-		// 	while($array = mysqli_fetch_array($result)){
-		// paging : 시작번호 = (현재 페이지 번호 - 1) * 페이지 당 데이터 수 (데이터베이스 기준이라 +1 안함)
-		$start = ($page-1) * $list_num;
+  // $i = 1;
+  // 	while($array = mysqli_fetch_array($result)){
+  // paging : 시작번호 = (현재 페이지 번호 - 1) * 페이지 당 데이터 수 (데이터베이스 기준이라 +1 안함)
+  $start = ($page - 1) * $list_num;
 
-		// paging : 쿼리 작성
-		$sql = "select * from restaurants limit $start, $list_num";
+  // paging : 쿼리 작성
+  $sql = "select * from restaurants limit $start, $list_num";
 
-		// paging: 쿼리 전송
-		$result = mysqli_query($dbcon, $sql);
+  // paging: 쿼리 전송
+  $result = mysqli_query($dbcon, $sql);
 
-		//paging : 글 번호
-		$cnt = $start + 1;
+  //paging : 글 번호
+  $cnt = $start + 1;
 
-		// paging : 회원 정보 가져오기
-		while($array = mysqli_fetch_array($result)){
-			?>
+  // paging : 회원 정보 가져오기
+  while ($array = mysqli_fetch_array($result)) { ?>
 
 
 		<tr>
 			<td><?php echo $cnt; ?></td>
-			<td><?php echo $array["restaurantName"]; ?></td>
-			<td><?php echo $array["categori"]; ?></td>
-			<td><?php echo $array["instaId"]; ?></td>
-			<td><?php echo $array["addr1"]." ".$array["addr2"]; ?></td>
-			<td><?php echo $array["review"]; ?></td>
-			<td><a href="restaurantEdit.php?idx=<?php echo $array["idx"]; ?>">수정</a></td>
+			<td><?php echo $array['restaurantName']; ?></td>
+			<td><?php echo $array['categori']; ?></td>
+			<td><?php echo $array['instaId']; ?></td>
+			<td><?php echo $array['addr1'] . ' ' . $array['addr2']; ?></td>
+			<td><?php echo $array['review']; ?></td>
+			<td><a href="restaurantEdit.php?idx=<?php echo $array['idx']; ?>">수정</a></td>
 			<td><a href="#" onclick="del_check(<?php echo $array['idx']; ?>)">삭제</a></td>
 		</tr>
-		<?php 
-			$cnt++;
-			};
-		?>
+		<?php $cnt++;}
+  ?>
 	</table>
 	<p class="pager">
-		<?php
+		<?php //paging : 이전 블럭
 
-		//paging : 이전 블럭
-		if($page <= 1){ ?>
+if ($page <= 1) { ?>
 			<!-- <a href="list.php?page=<?php echo $page = 1; ?>">이전</a> -->
 		<?php } else { ?>
-			<a href="restaurantsList.php?page=<?php echo ($page-1); ?>">이전</a>
-		<?php
-		};
-		?>
+			<a href="restaurantsList.php?page=<?php echo $page - 1; ?>">이전</a>
+		<?php } ?>
 		
 
 
 
 		
-		<?php
-		// pager: 페이지 번호
-		for($print_page = $s_pageNum; $print_page <= $e_pageNum; $print_page++){ ?>
-		<a href="restaurantsList.php?page=<?php echo $print_page;?>"><?php echo $print_page; ?></a>
-		<?php
-		};
-		?>
+		<?php // pager: 페이지 번호
 
-		<?php
-	if($page >= $total_page){ ?>
+for ($print_page = $s_pageNum; $print_page <= $e_pageNum; $print_page++) { ?>
+		<a href="restaurantsList.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
+		<?php } ?>
+
+		<?php if ($page >= $total_page) { ?>
 			<!-- <a href="list.php?page=<?php echo $total_page; ?>">다음</a> -->
 		<?php } else { ?>
-			<a href="restaurantsList.php?page=<?php echo ($page+1); ?>">다음</a>
-		<?php
-		};
-		?>
+			<a href="restaurantsList.php?page=<?php echo $page + 1; ?>">다음</a>
+		<?php } ?>
 	</p>
 </body>
 </html>

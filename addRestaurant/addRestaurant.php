@@ -2,18 +2,15 @@
 
 session_start();
 
-$s_id = isset($_SESSION["s_id"])? $_SESSION["s_id"]:"";
-$s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
+$s_id = isset($_SESSION['s_id']) ? $_SESSION['s_id'] : '';
+$s_name = isset($_SESSION['s_name']) ? $_SESSION['s_name'] : '';
 
-include"./inc/dbcon.php";
-
-
+include 'inc/dbcon.php';
 
 $sql = "select * from members where u_id = '$s_id';";
 //DB에서 값 가져오기
-$result = mysqli_query($dbcon,$sql);
+$result = mysqli_query($dbcon, $sql);
 $row = mysqli_fetch_assoc($result);
-
 ?>
 
 
@@ -92,9 +89,9 @@ $row = mysqli_fetch_assoc($result);
               <?php echo $s_name; ?>님 &nbsp어서오세요
               <li class="logout"><a href="login/logout.php">로그아웃</a></li>
               <li class="members"><a href="members/members.php">멤버</a></li>
-              <?php if($s_id == "admin"){ ?>
+              <?php if ($s_id == 'admin') { ?>
               <li class="admin"><a href="admin/admin.php">관리자</a></li>
-              <?php }; ?>
+              <?php } ?>
               <li class="intro"><a href="intro.php">소개</a></li>
             </p>
           </ul>
@@ -124,7 +121,9 @@ $row = mysqli_fetch_assoc($result);
         <label for="restaurantName"></label>
         <input style="width:150px;" type="text" name="restaurantName" placeholder="식당 이름(필수)" id="restaurantName"/>
         <label for="instaId"></label>
-        <input style="width:150px;" type="text" name="instaId" value="<?php echo $row['instaId']; ?>" id="instaId" readonly/>
+        <input style="width:150px;" type="text" name="instaId" value="<?php echo $row[
+            'instaId'
+        ]; ?>" id="instaId" readonly/>
         
         
         <label for="review"></label>

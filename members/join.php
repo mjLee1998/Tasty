@@ -2,8 +2,9 @@
 
 session_start();
 
-$s_id = isset($_SESSION["s_id"])? $_SESSION["s_id"]:"";
-$s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
+$s_id = isset($_SESSION['s_id']) ? $_SESSION['s_id'] : '';
+$s_name = isset($_SESSION['s_name']) ? $_SESSION['s_name'] : '';
+
 // echo "session ID : ".$s_id."/ name : ".$s_name;
 ?>
 
@@ -38,7 +39,7 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../style/join.css?after" />
+    <link rel="stylesheet" href="style/join.css"/>
     <script type="text/javascript">
       function form_check() {
         var u_name = document.getElementById("u_name");
@@ -124,7 +125,7 @@ $s_name = isset($_SESSION["s_name"])? $_SESSION["s_name"]:"";
       }
       function id_search() {
         window.open(
-          "search_id.php",
+          "searchId.php",
           "",
           "width=600, height=250, left=0, top=0"
         );

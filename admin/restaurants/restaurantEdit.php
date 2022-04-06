@@ -1,6 +1,6 @@
 <?php
 
-include 'inc/admin_session.php';
+include 'inc/adminSession.php';
 
 $idx = $_GET['idx'];
 
@@ -28,7 +28,7 @@ $array = mysqli_fetch_array($result);
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
     crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../style/restaurantEdit.css?after">
+    <link rel="stylesheet" href="style/restaurantEdit.css">
     <script type="text/javascript">
 			function edit_check(){
 				var restaurantName = document.querySelector("#restaurantName");

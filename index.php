@@ -42,8 +42,8 @@ $row = mysqli_fetch_assoc($result);
         <div class="menu">
           <ul>
             <?php if (!$s_id) { ?>
-            <li class="login"><a href="./login/login.php">로그인</a></li>
-            <li class="join"><a href="./members/join.php">회원가입</a></li>
+            <li class="login"><a href="login/login.php">로그인</a></li>
+            <li class="join"><a href="members/join.php">회원가입</a></li>
             <?php } else { ?>
             <p id="hello">
               <?php echo $s_name; ?>님 &nbsp어서오세요
@@ -67,7 +67,7 @@ $row = mysqli_fetch_assoc($result);
           <?php } else { ?>
             <div class="mainMenu1">
               <div class="addRestaurant">
-                <a href="addRestaurant.php">식당 추가</a>
+                <a href="addRestaurant/addRestaurant.php">식당 추가</a>
               </div>
             </div>
             <div class="mainMenu2">
