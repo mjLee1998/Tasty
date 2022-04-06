@@ -14,7 +14,6 @@ $row = mysqli_fetch_assoc($result);
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -29,6 +28,7 @@ $row = mysqli_fetch_assoc($result);
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style/addRestaurant.css">
+    <script src="../jquery-3.6.0.min.js"></script>
     <style>
       #map{
         z-index:0;
@@ -81,7 +81,7 @@ $row = mysqli_fetch_assoc($result);
     <header>
       <div class="header">
         <div class="logo">
-          <h1 class="tasty"><a href="index.php">Tasty</a></h1>
+          <h1 class="tasty"><a href="../index.php">Tasty</a></h1>
         </div>
         <div class="menu">
         <ul>
@@ -105,6 +105,7 @@ $row = mysqli_fetch_assoc($result);
         <label for="postcode"></label>
         <div class="input-group mb-3">
         <input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly class="form-control" aria-label="우편번호" aria-describedby="basic-addon2"/>
+        
         <div class="input-group-append"></div>
         <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="btn btn-outline-secondary"/>
       </div>
@@ -152,7 +153,7 @@ $row = mysqli_fetch_assoc($result);
         display: none;
         position: fixed;
         overflow: hidden;
-        z-index: 1;
+        z-index: 3;
         -webkit-overflow-scrolling: touch;
         "
     >
@@ -271,6 +272,11 @@ $row = mysqli_fetch_assoc($result);
             console.log(data.address);
 
             // 지도 파트
+
+            // 크롬의 경우 CORS정책으로 인해서 주소를 고르더라도 주소가 나오지 않는다. 
+            // 터미널에서 이 코드를 입력하고 뜨는 새로운 창에서 실행하면 된다.
+            // open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome — args — user-data-dir=”/tmp/chrome_dev_test” — disable-web-security
+
             // var addr1 = data.address; // 최종 주소 변수
 
             // // 주소 정보를 해당 필드에 넣는다.

@@ -32,7 +32,7 @@ $row = mysqli_fetch_assoc($result);
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style/index.css?after">
-    <script type="text/javascript"></script>
+    <script src="jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <header class="header">
