@@ -31,7 +31,7 @@ $row = mysqli_fetch_assoc($result);
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style/index.css?after">
+    <link rel="stylesheet" href="style/index.css">
     <script src="jquery-3.6.0.min.js"></script>
   </head>
   <body>
@@ -107,7 +107,7 @@ $row = mysqli_fetch_assoc($result);
         </div>
         </select>
       </div>
-      <div id="map" style="width: 380px; height: 480px;"></div>
+      <div id="map" style="width:99.5%; height: 480px;"></div>
       <script
         type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=26fdf226a690f77f33e7a8f67ee40ac1"

@@ -1,304 +1,304 @@
 /* 기본 세팅 및 폰트 설정 */
 body,
 input {
-  font-size: 20px;
+    font-size: 20px;
 }
 a {
-  text-decoration: none;
-  color: black;
+    text-decoration: none;
+    color: black;
 }
 a:hover {
-  color: black;
+    color: black;
 }
 h1 a:visited {
-  color: black;
+    color: black;
 }
 @font-face {
-  font-family: "TmonMonsori";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'TmonMonsori';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff')
+        format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 body {
-  background-color: #d6d6d0;
-  font-family: "TmonMonsori";
-  font-size: 14px;
-  margin: 0px 8px;
+    background-color: #d6d6d0;
+    font-family: 'TmonMonsori';
+    font-size: 14px;
+    margin: 0px 8px;
 }
 
 /* 헤더 로고 및 사이트맵 스타일 */
 .header a {
-  text-decoration: none;
-  color: black;
+    text-decoration: none;
+    color: black;
 }
 .header ul {
-  display: block;
-  width: 250px;
-  padding-left: 0;
-  padding-top: -10px;
+    display: block;
+    width: 250px;
+    padding-left: 0;
+    padding-top: -10px;
 }
 .header li {
-  list-style: none;
+    list-style: none;
 }
 .header ul {
-  margin: 14px 0px;
+    margin: 14px 0px;
 }
-input[type="checkbox"] {
-  width: 24px;
-  height: 24px;
+input[type='checkbox'] {
+    width: 24px;
+    height: 24px;
 }
 span {
-  font-size: 14px;
-  color: red;
+    font-size: 14px;
+    color: red;
 }
 .header {
-  box-sizing: content-box;
-  width: 380px;
-  height: 70px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+    box-sizing: content-box;
+    width: 380px;
+    height: 70px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .header .tasty {
-  font-size: 35px;
-  color: #38a69b;
-  line-height: 170%;
+    font-size: 35px;
+    color: #38a69b;
+    line-height: 170%;
 }
 .header .logo {
-  width: 100px;
-  height: 50px;
-  margin-top: 8px;
-  margin-left: 10px;
-  float: left;
-  /* background-image: url(../img/logo.png);
+    width: 100px;
+    height: 50px;
+    margin-top: 8px;
+    margin-left: 10px;
+    float: left;
+    /* background-image: url(../img/logo.png);
   background-repeat: no-repeat;
   background-size: cover; */
 }
 #hello {
-  padding-top: 5px;
-  margin-left: 20px;
-  color: #38a69b;
+    padding-top: 5px;
+    margin-left: 20px;
+    color: #38a69b;
 }
 .menu ul {
-  width: 250px;
-  height: 70px;
-  margin-left: 130px;
-  padding-right: 10px;
+    width: 250px;
+    height: 70px;
+    margin-left: 130px;
+    padding-right: 10px;
 }
 .menu li {
-  float: right;
-  margin-top: 40px;
-  margin-left: 10px;
+    float: right;
+    margin-top: 40px;
+    margin-left: 10px;
 }
 .menu li a {
-  color: #3f6473;
-  font-size: 16px;
+    color: #3f6473;
+    font-size: 16px;
 }
 #hello {
-  font-size: 16px;
-  position: absolute;
-  left: 220px;
-  top: 15px;
-  margin-top: 14px;
+    font-size: 16px;
+    position: absolute;
+    left: 220px;
+    top: 15px;
+    margin-top: 14px;
 }
 
 /* 메인 메뉴 스타일 */
 .main_header {
-  box-sizing: content-box;
-  width: 380px;
-  height: 38px;
-  margin-bottom: 20px;
+    box-sizing: content-box;
+    width: 380px;
+    height: 38px;
+    margin-bottom: 20px;
 }
 .main_header .mainMenu1 a {
-  color: #403d40;
+    color: #403d40;
 }
 .mainMenu1 {
-  font-size: 15px;
-  width: 100px;
-  height: 38px;
-  padding: 10px 10px 10px 0px;
-  margin-left: 20px;
-  float: left;
+    font-size: 15px;
+    width: 100px;
+    height: 38px;
+    padding: 10px 10px 10px 0px;
+    margin-left: 20px;
+    float: left;
 }
 .addRestaurant {
-  padding-left: 10px;
+    padding-left: 10px;
 }
 .mainMenu2 {
-  color: #403d40;
-  font-size: 15px;
-  width: 100px;
-  height: 38px;
-  padding: 10px 10px 10px 0px;
-  margin-left: 20px;
-  float: left;
+    color: #403d40;
+    font-size: 15px;
+    width: 100px;
+    height: 38px;
+    padding: 10px 10px 10px 0px;
+    margin-left: 20px;
+    float: left;
 }
 .mainMenu3 {
-  color: #403d40;
-  font-size: 15px;
-  width: 110px;
-  height: 38px;
-  padding: 10px 10px 10px 0px;
-  margin: 0px 0px 0px 20px;
-  float: left;
+    color: #403d40;
+    font-size: 15px;
+    width: 110px;
+    height: 38px;
+    padding: 10px 10px 10px 0px;
+    margin: 0px 0px 0px 20px;
+    float: left;
 }
 .selectMember {
-  padding-left: 10px;
+    padding-left: 10px;
 }
 .search {
-  width: 390px;
+    width: 390px;
 }
 .input-group {
-  width: 240px;
-  float: right;
-  margin-right: 15px;
+    width: 240px;
+    float: right;
+    margin-right: 15px;
 }
 .input-group input {
-  text-align: center;
+    text-align: center;
 }
 .form-select {
-  float: right;
-  font-size: 15px;
-  margin-right: 15px;
-  width: 110px;
-  height: 38px;
-  text-align: center;
-  color: rgb(61, 63, 74);
-  position: relative;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+    float: right;
+    font-size: 15px;
+    margin-right: 15px;
+    width: 110px;
+    height: 38px;
+    text-align: center;
+    color: rgb(61, 63, 74);
+    position: relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 .btn {
-  color: #e4edf2;
-  background-color: #38a69b;
+    color: #e4edf2;
+    background-color: #38a69b;
 }
 .searchButton {
-  float: left;
-  width: 80px;
-  height: 38px;
-  border-radius: 10px;
-  border: 1px solid #e4edf2;
-  margin-left: 20px;
-  margin-bottom: 20px;
-  font-size: 14px;
-  color: #e4edf2;
-  background-color: #38a69b;
-  line-height: 36px;
+    float: left;
+    width: 80px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid #e4edf2;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #e4edf2;
+    background-color: #38a69b;
+    line-height: 36px;
 }
 .searchButton:hover {
-  border: 1px solid #38a69b;
-  background-color: #e4edf2;
-  color: #38a69b;
+    border: 1px solid #38a69b;
+    background-color: #e4edf2;
+    color: #38a69b;
 }
 
 /* 지도 스타일 */
 #map {
-  box-sizing: content-box;
+    box-sizing: content-box;
 }
 
 /* 오버레이 스타일 */
 .overlaybox {
-  font-family: "helvetica";
+    font-family: 'helvetica';
 }
 .overlaybox {
-  position: relative;
-  width: 150px;
-  height: 180px;
-  border-radius: 5%;
-  position: absolute;
-  top: -215px;
-  left: -70px;
-  background-color: rgb(61, 63, 74);
-  padding: 15px 10px;
+    position: relative;
+    width: 150px;
+    height: 180px;
+    border-radius: 5%;
+    position: absolute;
+    top: -215px;
+    left: -70px;
+    background-color: rgb(61, 63, 74);
+    padding: 15px 10px;
 }
 .overlaybox div,
 ul {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 .overlaybox li {
-  list-style: none;
+    list-style: none;
 }
 .overlaybox .boxtitle {
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: right;
-  margin-top: -8px;
-  margin-right: 3px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: right;
+    margin-top: -8px;
+    margin-right: 3px;
 }
 .categori {
-  position: relative;
-  width: 127px;
-  height: 20px;
-  text-align: right;
-  font-size: 12px;
-  color: #fff;
+    position: relative;
+    width: 127px;
+    height: 20px;
+    text-align: right;
+    font-size: 12px;
+    color: #fff;
 }
 .overlaybox .instaId {
-  color: #fff;
-  font-weight: bold;
-  font-size: 12px;
-  position: absolute;
-  top: 30px;
-  left: 10px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    position: absolute;
+    top: 30px;
+    left: 10px;
 }
 .first .triangle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0px;
-  height: 0px;
-  border-bottom: 36px solid green;
-  border-left: 0px solid transparent;
-  border-right: 36px solid transparent;
-  transform: rotate(90deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0px;
+    height: 0px;
+    border-bottom: 36px solid green;
+    border-left: 0px solid transparent;
+    border-right: 36px solid transparent;
+    transform: rotate(90deg);
 }
 .overlaybox ul {
-  width: 127px;
+    width: 127px;
 }
 .overlaybox li {
-  position: relative;
-  margin-bottom: 6px;
-  background: #2b2d36;
-  padding: 5px 8px;
-  color: #aaabaf;
-  line-height: 1;
-  border-radius: 5%;
+    position: relative;
+    margin-bottom: 6px;
+    background: #2b2d36;
+    padding: 5px 8px;
+    color: #aaabaf;
+    line-height: 1;
+    border-radius: 5%;
 }
 .overlaybox li span {
-  display: inline-block;
+    display: inline-block;
 }
 .overlaybox li .addr {
-  font-size: 12px;
-  font-weight: bold;
+    font-size: 12px;
+    font-weight: bold;
 }
 .overlaybox li .addr1 {
-  font-size: 10px;
-  white-space: normal;
+    font-size: 10px;
+    white-space: normal;
 }
 .overlaybox li .addr2 {
-  font-size: 10px;
+    font-size: 10px;
 }
 .overlaybox .review {
-  width: 127px;
-  height: 70px;
-  overflow: hidden;
-  word-break: break-all;
+    width: 127px;
+    height: 70px;
+    overflow: hidden;
+    word-break: break-all;
 }
 .overlaybox .review:hover {
-  overflow: visible;
+    overflow: visible;
 }
 .overlaybox li .review1 {
-  font-size: 12px;
-  font-weight: bold;
+    font-size: 12px;
+    font-weight: bold;
 }
 .overlaybox li .review2 {
-  font-size: 10px;
-  white-space: normal;
+    font-size: 10px;
+    white-space: normal;
 }
 .overlaybox li:hover {
-  color: #fff;
-  background: #d24545;
-  transform: scale(1.1);
+    color: #fff;
+    background: #d24545;
+    transform: scale(1.1);
 }

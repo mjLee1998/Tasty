@@ -65,7 +65,7 @@ if ($e_pageNum > $total_page) {
 <header>
       <div class="header">
         <div class="logo">
-          <h1 class="tasty"><a href="../index.php" style="color:#38a69b; margin-bottom:10px;">Tasty</a></h1>
+          <h1 class="tasty"><a href="../../index.php" style="color:#38a69b; margin-bottom:10px;">Tasty</a></h1>
         </div>
         <div class="menu">
         <ul>
