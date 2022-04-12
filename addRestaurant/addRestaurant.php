@@ -87,12 +87,12 @@ $row = mysqli_fetch_assoc($result);
         <ul>
             <p id="hello">
               <?php echo $s_name; ?>님 &nbsp어서오세요
-              <li class="logout"><a href="login/logout.php">로그아웃</a></li>
-              <li class="members"><a href="members/members.php">멤버</a></li>
+              <li class="logout"><a href="../login/logout.php">로그아웃</a></li>
+              <li class="members"><a href="../members/members.php">멤버</a></li>
               <?php if ($s_id == 'admin') { ?>
-              <li class="admin"><a href="admin/admin.php">관리자</a></li>
+              <li class="admin"><a href="../admin/admin.php">관리자</a></li>
               <?php } ?>
-              <li class="intro"><a href="intro.php">소개</a></li>
+              <li class="intro"><a href="../intro.php">소개</a></li>
             </p>
           </ul>
         </div>

@@ -10,7 +10,7 @@ if (!$s_id || $s_id != 'admin') {
     echo "
 <script type=\"text/javascript\">
 	alert(\"관리자 로그인이 필요합니다.\");
-	location.href=\"https://localhost/tasty/index.php\"
+	location.href=\"https://audwls172.cafe24.com/index.php\"
 </script>
 ";
 }

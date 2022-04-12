@@ -56,6 +56,7 @@ $s_name = isset($_SESSION['s_name']) ? $_SESSION['s_name'] : '';
 			<article>
 				<h5>Tasty 이용 방법</h5>
 				Tasty는 맛집 공유 사이트입니다.<br><br>
+        카테고리나 식당 이름을 이용하여 검색해보세요.<br><br>
 				마커를 누르면 등록한 사람과 식당의 주소, 간단한 한줄평을 볼 수 있습니다.<br><br>
 				메인 페이지로 가서 직접 식당 등록을 해보세요!!!
 			</article>

@@ -80,7 +80,7 @@
 			</p> -->
 			<p>
 				<button type="submit"  id="login">로그인</button>
-				<button onclick="history.back()">이전으로</button>
+				<button onclick="location.href='https://audwls172.cafe24.com/index.php'">홈으로</button>
 			</p>
 		</fieldset>
 

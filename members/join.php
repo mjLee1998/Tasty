@@ -92,22 +92,11 @@ $s_name = isset($_SESSION['s_name']) ? $_SESSION['s_name'] : '';
           repwd.focus();
           return false;
         }
-        if (mobile.value == "") {
-          var err_txt = document.querySelector(".err_mobile");
-          err_txt.innerHTML = "<em>전화번호를 입력하세요.</em>";
-          mobile.focus();
-          return false;
-        }
         var reg_mobile = /^[0-9]{10,11}$/g;
         if (!reg_mobile.test(mobile.value)) {
           var err_txt = document.querySelector(".err_mobile");
           err_txt.textContent = "전화번호는 숫자만 입력할 수 있습니다.";
           mobile.focus();
-          return false;
-        }
-        if(postcode.value == ""){
-          var err_txt = document.querySelector(".err_postcode");
-          err_txt.textContent = "우편번호 찾기 버튼을 눌러주세요.";
           return false;
         }
         if (!agree.checked) {
@@ -192,14 +181,14 @@ $s_name = isset($_SESSION['s_name']) ? $_SESSION['s_name'] : '';
 
         <p>
           <label for="mobile">전화번호</label>
-          <input type="text" name="mobile" id="mobile" placeholder="'-' 없이 숫자만 입력" style="margin-left:2px; width:210px"/>
+          <input type="text" name="mobile" id="mobile" placeholder="'-' 없이 숫자만 입력(선택)" style="margin-left:2px; width:210px"/>
           <br />
           <span class="err_mobile"></span>
         </p>
         
         <p>
           <label for="email">이메일</label>
-          <input type="text" name="email_id" id="email_id" style="width:95px; margin-left:13px;"/> @
+          <input type="text" name="email_id" id="email_id" style="width:95px; margin-left:13px;" placeholer="선택"/> @
           <input type="text" name="email_dns" id="email_dns" style="width:95px;"/>
           <select name="email_sel" id="email_sel" onchange="change_email()"class="form-select" aria-label="Default select example">
             <option value="">직접 입력</option>
@@ -223,7 +212,7 @@ $s_name = isset($_SESSION['s_name']) ? $_SESSION['s_name'] : '';
         
         <label for="postcode"></label>
         <div class="input-group mb-3">
-          <input type="text" name="postcode" id="postcode" placeholder="우편번호" readonly class="form-control" aria-label="우편번호" aria-describedby="basic-addon2"/>
+          <input type="text" name="postcode" id="postcode" placeholder="우편번호(선택)" readonly class="form-control" aria-label="우편번호" aria-describedby="basic-addon2"/>
           <div class="input-group-append"></div>
           <input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" class="btn btn-outline-secondary"/>
           <span class="err_postcode"></span>
@@ -232,7 +221,7 @@ $s_name = isset($_SESSION['s_name']) ? $_SESSION['s_name'] : '';
         <label for="address"></label>
         <input style="width:307px; margin-bottom:10px;" type="text" name="address" id="address" placeholder="주소(자동 기입)" readonly/><br />
         <label for="detailAddress"></label>
-        <input style="width:150px; " type="text" name="detailAddress" id="detailAddress" placeholder="상세주소(필수)" />
+        <input style="width:150px; " type="text" name="detailAddress" id="detailAddress" placeholder="상세주소(선택)" />
         <label for="extraAddress"></label>
         <input style="width:140px;" type="text" name="extraAddress" id="extraAddress" placeholder="참고항목(자동 기입)" readonly/>
       </p>
@@ -265,7 +254,7 @@ $s_name = isset($_SESSION['s_name']) ? $_SESSION['s_name'] : '';
 
         <p class="agree">
           <input type="checkbox" name="agree" id="agree" value="y" />
-          <label for="agree">약관 동의</label>
+          <label for="agree">정보 제공 동의(필수)</label>
         </p>
 
         <p class="buttons">

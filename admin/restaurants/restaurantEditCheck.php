@@ -32,7 +32,7 @@ mysqli_close($dbcon);
 echo "
 <script type=\"text/javascript\">
 	alert(\"정보가 수정되었습니다.\");
-	location.href=\"https://localhost/tasty/admin/restaurantsList.php\"
+	location.href=\"https://audwls172.cafe24.com/admin/restaurants/restaurantsList.php\"
 </script>
 ";
 
