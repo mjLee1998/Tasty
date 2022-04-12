@@ -54,6 +54,12 @@ if ($e_pageNum > $total_page) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 목록</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+    crossorigin="anonymous"
+    />
 		<link rel="stylesheet" href="style/restaurantsList.css">
     <script type="text/javascript">
 			function del_check(idx){
@@ -89,6 +95,25 @@ if ($e_pageNum > $total_page) {
 	<p>
 	</p>
 	<hr>
+  <!-- <div class="search">
+        <div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="식당 이름을 입력" aria-label="식당 이름을 입력" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+          </div>
+    <button class="btn btn-outline-secondary" type="button" onclick="categorize()">검색</button>
+  </div>
+        <select name="selectCategori" id="selectCategori" class="form-select" aria-label="Default select example">
+          <div class="options">
+            <option value="">카테고리</option>
+            <option value="한식">한식</option>
+            <option value="중식">중식</option>
+            <option value="일식">일식</option>
+            <option value="양식">양식</option>
+            <option value="카페">카페</option>
+            <option value="기타">기타</option>
+        </div>
+        </select>
+      </div> -->
 	<p>총 <?php echo $num; ?>개</p>
 	<table border = "1">
 		<tr>
@@ -131,7 +156,8 @@ if ($e_pageNum > $total_page) {
 	</table>
 	<p class="pager">
 		<?php //paging : 이전 블럭
-  if ($page <= 1) { ?>
+
+if ($page <= 1) { ?>
 			<!-- <a href="list.php?page=<?php echo $page = 1; ?>">이전</a> -->
 		<?php } else { ?>
 			<a href="restaurantsList.php?page=<?php echo $page - 1; ?>">이전</a>
@@ -142,7 +168,8 @@ if ($e_pageNum > $total_page) {
 
 		
 		<?php // pager: 페이지 번호
-  for ($print_page = $s_pageNum; $print_page <= $e_pageNum; $print_page++) { ?>
+
+for ($print_page = $s_pageNum; $print_page <= $e_pageNum; $print_page++) { ?>
 		<a href="restaurantsList.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
 		<?php } ?>
 

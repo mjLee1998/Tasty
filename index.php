@@ -78,7 +78,7 @@ $row = mysqli_fetch_assoc($result);
               </div>
             </div>
             <div class="mainMenu3">
-              <div class="selectMember">
+              <div class="howToUse">
                 <a href="howToUse.php">
                   이용 방법 보기
                 </a>

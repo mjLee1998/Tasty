@@ -141,7 +141,7 @@ span {
     margin: 0px 0px 0px 20px;
     float: left;
 }
-.selectMember {
+.howToUse {
     padding-left: 10px;
 }
 .search {
@@ -282,7 +282,7 @@ ul {
 }
 .overlaybox .review {
     width: 127px;
-    height: 70px;
+    height: 67px;
     overflow: hidden;
     word-break: break-all;
 }
