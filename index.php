@@ -100,10 +100,9 @@ $row = mysqli_fetch_assoc($result);
             <option value="한식">한식</option>
             <option value="중식">중식</option>
             <option value="일식">일식</option>
-          <option value="양식">양식</option>
-          <option value="분식">분식</option>
-          <option value="스시">스시</option>
-          <option value="회">회</option>
+            <option value="양식">양식</option>
+            <option value="카페">카페</option>
+            <option value="기타">기타</option>
         </div>
         </select>
       </div>
