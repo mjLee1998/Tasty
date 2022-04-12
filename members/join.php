@@ -79,9 +79,9 @@ $s_name = isset($_SESSION['s_name']) ? $_SESSION['s_name'] : '';
           return false;
         }
         var pwd_len = pwd.value.length;
-        if (pwd_len < 4 || pwd_len > 8) {
+        if (pwd_len < 4 || pwd_len > 16) {
           var err_txt = document.querySelector(".err_pwd");
-          err_txt.textContent = "비밀번호는 4~8글자만 입력할 수 있습니다.";
+          err_txt.textContent = "비밀번호는 4~16글자만 입력할 수 있습니다.";
           pwd.focus();
           return false;
         }

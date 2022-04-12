@@ -55,7 +55,7 @@
         </div>
       </div>
     </header>
-	<form name="login_form" action="logincheck.php" method="post" onsubmit="return login_check()">
+	<form name="login_form" action="loginCheck.php" method="post" onsubmit="return login_check()">
 
 		<fieldset>
 			<legend>로그인</legend>
