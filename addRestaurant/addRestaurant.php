@@ -87,12 +87,12 @@ $row = mysqli_fetch_assoc($result);
         <ul>
             <p id="hello">
               <?php echo $s_name; ?>님 &nbsp어서오세요
-              <li class="logout"><a href="login/logout.php">로그아웃</a></li>
-              <li class="members"><a href="members/members.php">멤버</a></li>
+              <li class="logout"><a href="../login/logout.php">로그아웃</a></li>
+              <li class="members"><a href="../members/members.php">멤버</a></li>
               <?php if ($s_id == 'admin') { ?>
-              <li class="admin"><a href="admin/admin.php">관리자</a></li>
+              <li class="admin"><a href="../admin/admin.php">관리자</a></li>
               <?php } ?>
-              <li class="intro"><a href="intro.php">소개</a></li>
+              <li class="intro"><a href="../intro.php">소개</a></li>
             </p>
           </ul>
         </div>
@@ -136,9 +136,8 @@ $row = mysqli_fetch_assoc($result);
           <option value="중식">중식</option>
           <option value="일식">일식</option>
           <option value="양식">양식</option>
-          <option value="분식">분식</option>
-          <option value="스시">스시</option>
-          <option value="회">회</option>
+          <option value="분식">카페</option>
+          <option value="스시">기타</option>
         </select>
         <label for="location"></label>
         <input type="text" name="location" id="location" value="">

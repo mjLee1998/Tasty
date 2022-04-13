@@ -56,18 +56,18 @@ $array = mysqli_fetch_array($result);
 <header>
     <div class="header">
         <div class="logo">
-        <h1 class="tasty"><a href="https://localhost/tasty/index.php" style="color:#38a69b; margin-bottom:10px;">Tasty</a></h1>
+        <h1 class="tasty"><a href="https://audwls172.cafe24.com/tasty/index.php" style="color:#38a69b; margin-bottom:10px;">Tasty</a></h1>
         </div>
         <div class="menu">
         <ul>
             <p id="hello">
             <?php echo $s_name; ?>님 &nbsp어서오세요
-            <li class="logout"><a href="../login/logout.php">로그아웃</a></li>
-            <li class="members"><a href="../members/members.php">멤버</a></li>
+            <li class="logout"><a href="../../login/logout.php">로그아웃</a></li>
+            <li class="members"><a href="../../members/members.php">멤버</a></li>
             <?php if ($s_id == 'admin') { ?>
-            <li class="admin"><a href="admin.php">관리자</a></li>
+            <li class="admin"><a href="../admin.php">관리자</a></li>
             <?php } ?>
-            <li class="intro"><a href="../intro.php">소개</a></li>
+            <li class="intro"><a href="../../intro.php">소개</a></li>
             </p>
         </ul>
         </div>

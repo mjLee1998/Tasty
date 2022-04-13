@@ -104,6 +104,7 @@ span {
 .header h1 {
     margin-top: 0px;
 }
+
 .search {
     width: 390px;
 }
@@ -149,4 +150,9 @@ span {
     border: 1px solid #38a69b;
     background-color: #e4edf2;
     color: #38a69b;
+}
+th,
+td {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 }

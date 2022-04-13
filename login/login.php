@@ -55,7 +55,7 @@
         </div>
       </div>
     </header>
-	<form name="login_form" action="logincheck.php" method="post" onsubmit="return login_check()">
+	<form name="login_form" action="loginCheck.php" method="post" onsubmit="return login_check()">
 
 		<fieldset>
 			<legend>로그인</legend>
@@ -80,7 +80,7 @@
 			</p> -->
 			<p>
 				<button type="submit"  id="login">로그인</button>
-				<button onclick="history.back()">이전으로</button>
+				<button onclick="location.href='https://audwls172.cafe24.com/index.php'">홈으로</button>
 			</p>
 		</fieldset>
 
