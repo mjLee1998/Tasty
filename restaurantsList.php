@@ -90,6 +90,26 @@ if ($e_pageNum > $total_page) {
 	</p>
 	<hr>
 	<p>총 <?php echo $num; ?>개</p>
+  <div class="search">
+        <div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="식당 이름을 입력" aria-label="식당 이름을 입력" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+          </div>
+    <button class="btn btn-outline-secondary" type="button" onclick="categorize()">검색</button>
+  </div>
+        <select name="selectCategori" id="selectCategori" class="form-select" aria-label="Default select example">
+          <div class="options">
+            <option value="">카테고리</option>
+            <option value="한식">한식</option>
+            <option value="중식">중식</option>
+            <option value="일식">일식</option>
+          <option value="양식">양식</option>
+          <option value="분식">분식</option>
+          <option value="스시">스시</option>
+          <option value="회">회</option>
+        </div>
+        </select>
+      </div>
 	<table border = "1">
 		<tr>
 			<td>번호</td>
@@ -131,7 +151,8 @@ if ($e_pageNum > $total_page) {
 	</table>
 	<p class="pager">
 		<?php //paging : 이전 블럭
-  if ($page <= 1) { ?>
+
+if ($page <= 1) { ?>
 			<!-- <a href="list.php?page=<?php echo $page = 1; ?>">이전</a> -->
 		<?php } else { ?>
 			<a href="restaurantsList.php?page=<?php echo $page - 1; ?>">이전</a>
@@ -142,7 +163,8 @@ if ($e_pageNum > $total_page) {
 
 		
 		<?php // pager: 페이지 번호
-  for ($print_page = $s_pageNum; $print_page <= $e_pageNum; $print_page++) { ?>
+
+for ($print_page = $s_pageNum; $print_page <= $e_pageNum; $print_page++) { ?>
 		<a href="restaurantsList.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
 		<?php } ?>
 
