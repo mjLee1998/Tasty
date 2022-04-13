@@ -105,7 +105,7 @@ span {
     margin-top: 0px;
 }
 
-/* .search {
+.search {
     width: 390px;
 }
 .input-group {
@@ -132,7 +132,25 @@ span {
 .btn {
     color: #e4edf2;
     background-color: #38a69b;
-} */
+}
+.searchButton {
+    float: left;
+    width: 80px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid #e4edf2;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #e4edf2;
+    background-color: #38a69b;
+    line-height: 36px;
+}
+.searchButton:hover {
+    border: 1px solid #38a69b;
+    background-color: #e4edf2;
+    color: #38a69b;
+}
 th,
 td {
     border-right: 1px solid black;
