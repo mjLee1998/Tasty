@@ -193,7 +193,6 @@ for(i = 0; i < positions.length; i++){
         var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
         // 마커 이미지의 이미지 주소입니다
         
-        
         </script>
     
     <script>
